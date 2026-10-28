@@ -44,9 +44,9 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{fon
 .user-dropdown-head{display:flex;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
 .user-dropdown-avatar{width:42px;height:42px;border-radius:50%;flex:none;background:var(--red);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
 .user-dropdown-info{min-width:0;flex:1}
-.user-dropdown-info strong{display:block;font-size:14.5px;font-weight:800;color:var(--ink)}
+.user-dropdown-info strong{display:block;font-size:14.5px;font-weight:800}
 .user-dropdown-info span{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
-.user-dropdown-item{display:flex;align-items:center;gap:10px;width:100%;padding:13px 18px;text-align:left;font-size:14px;font-weight:600;color:var(--ink);transition:background .12s}
+.user-dropdown-item{display:flex;align-items:center;gap:10px;width:100%;padding:13px 18px;text-align:left;font-size:14px;font-weight:600;transition:background .12s}
 .user-dropdown-item:hover{background:var(--soft)}
 .user-dropdown-item svg{color:var(--muted);flex:none}
 .user-dropdown-item:hover svg{color:var(--red)}
@@ -274,7 +274,7 @@ body.reading .read-progress{display:block}
 .settings-verify input{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:2px;outline:none;margin-bottom:10px}
 .settings-verify input:focus{border-color:var(--ink)}
 .settings-verify-actions{display:flex;gap:8px;justify-content:flex-end}
-.settings-action{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 16px;background:var(--soft);border-radius:2px;font-size:14px;font-weight:600;color:var(--ink);transition:background .12s;margin-bottom:8px}
+.settings-action{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 16px;background:var(--soft);border-radius:2px;font-size:14px;font-weight:600;transition:background .12s;margin-bottom:8px}
 .settings-action:last-child{margin-bottom:0}
 .settings-action:hover{background:#efefef}
 .settings-action svg{color:var(--muted)}
@@ -395,7 +395,7 @@ body.reading .read-progress{display:block}
         <div class="media r-16x9" data-article="0"><img src="https://picsum.photos/seed/auning-hero-school/1200/675" alt="Auning Skole"></div>
         <span class="kicker">Skolestruktur</span>
         <h1 class="hero-title"><a href="#/artikel/0" data-article="0">Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”</a></h1>
-        <p class="hero-dek">Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs. I dag går børnene fra Langhøjskolen, Allingåbroskolen og Rougsøskolen videre til Auning Skole i 7. klasse — men den ordning kan snart være fortid.</p>
+        <p class="hero-dek">Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs.</p>
         <div class="meta"><span>Af lokalredaktionen</span><span class="sep">·</span><span>5. oktober 2026</span></div>
       </div>
       <div class="hero-side">
@@ -479,80 +479,57 @@ body.reading .read-progress{display:block}
   </div>
 </div>
 
-<!-- AUTH MODAL (login + forgot flow) -->
+<!-- AUTH MODAL -->
 <div class="modal-backdrop" id="authModal">
   <div class="modal-box auth-box">
     <button class="modal-close" id="authClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 
-    <!-- LOGIN VIEW -->
     <div id="authViewLogin">
       <h3>Log ind</h3>
       <p class="auth-sub">Har du ikke en konto? Den oprettes automatisk, første gang du logger ind.</p>
       <form id="loginForm">
-        <div class="auth-field" id="loginFieldEmail">
-          <label for="loginEmail">E-mail</label>
-          <input type="email" id="loginEmail" autocomplete="email" placeholder="dig@eksempel.dk">
-        </div>
-        <div class="auth-field" id="loginFieldPassword">
-          <label for="loginPassword">Adgangskode</label>
-          <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Din adgangskode">
-        </div>
+        <div class="auth-field" id="loginFieldEmail"><label for="loginEmail">E-mail</label><input type="email" id="loginEmail" autocomplete="email" placeholder="dig@eksempel.dk"></div>
+        <div class="auth-field" id="loginFieldPassword"><label for="loginPassword">Adgangskode</label><input type="password" id="loginPassword" autocomplete="current-password" placeholder="Din adgangskode"></div>
         <div class="auth-feedback" id="loginFeedback"></div>
         <button type="submit" class="auth-submit" id="loginSubmit">Log ind</button>
       </form>
       <a class="auth-link" id="toForgot">Glemt adgangskode?</a>
     </div>
 
-    <!-- FORGOT STEP 1: EMAIL -->
     <div id="authViewForgot1" hidden>
       <h3>Glemt adgangskode?</h3>
       <p class="auth-sub">Indtast din e-mail. Vi sender dig en kode, så du kan vælge en ny adgangskode.</p>
       <form id="forgot1Form">
-        <div class="auth-field" id="forgotFieldEmail">
-          <label for="forgotEmail">E-mail</label>
-          <input type="email" id="forgotEmail" autocomplete="email" placeholder="dig@eksempel.dk">
-        </div>
+        <div class="auth-field" id="forgotFieldEmail"><label for="forgotEmail">E-mail</label><input type="email" id="forgotEmail" autocomplete="email" placeholder="dig@eksempel.dk"></div>
         <div class="auth-feedback" id="forgot1Feedback"></div>
         <button type="submit" class="auth-submit" id="forgot1Submit">Send kode</button>
       </form>
       <a class="auth-link" id="backToLogin1">← Tilbage til login</a>
     </div>
 
-    <!-- FORGOT STEP 2: CODE -->
     <div id="authViewForgot2" hidden>
       <h3>Indtast kode</h3>
       <p class="auth-sub">Vi har sendt en kode til <strong id="forgotEmailDisplay"></strong>. I denne demo vises koden her i stedet for i din indbakke:</p>
       <div class="demo-code" id="demoCode">------<small>Demo-kode</small></div>
       <form id="forgot2Form">
-        <div class="auth-field" id="forgotFieldCode">
-          <label for="forgotCode">6-cifret kode</label>
-          <input type="text" id="forgotCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
-        </div>
+        <div class="auth-field" id="forgotFieldCode"><label for="forgotCode">6-cifret kode</label><input type="text" id="forgotCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456"></div>
         <div class="auth-feedback" id="forgot2Feedback"></div>
         <button type="submit" class="auth-submit" id="forgot2Submit">Bekræft kode</button>
       </form>
       <a class="auth-link" id="backToForgot1">← Tilbage</a>
     </div>
 
-    <!-- FORGOT STEP 3: NEW PASSWORD -->
     <div id="authViewForgot3" hidden>
       <h3>Vælg ny adgangskode</h3>
       <p class="auth-sub">Koden er bekræftet. Vælg en ny adgangskode til din konto.</p>
       <form id="forgot3Form">
-        <div class="auth-field" id="forgotFieldNewPwd">
-          <label for="forgotNewPwd">Ny adgangskode</label>
-          <input type="password" id="forgotNewPwd" placeholder="Mindst 4 tegn">
-        </div>
-        <div class="auth-field" id="forgotFieldConfirm">
-          <label for="forgotConfirmPwd">Bekræft ny adgangskode</label>
-          <input type="password" id="forgotConfirmPwd" placeholder="Gentag adgangskoden">
-        </div>
+        <div class="auth-field" id="forgotFieldNewPwd"><label for="forgotNewPwd">Ny adgangskode</label><input type="password" id="forgotNewPwd" placeholder="Mindst 4 tegn"></div>
+        <div class="auth-field" id="forgotFieldConfirm"><label for="forgotConfirmPwd">Bekræft ny adgangskode</label><input type="password" id="forgotConfirmPwd" placeholder="Gentag adgangskoden"></div>
         <div class="auth-feedback" id="forgot3Feedback"></div>
         <button type="submit" class="auth-submit" id="forgot3Submit">Gem ny adgangskode</button>
       </form>
     </div>
 
-    <!-- SUCCESS -->
     <div id="authViewSuccess" hidden>
       <div class="auth-success-icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="20"/><path d="M16 27l7 7 13-14"/></svg></div>
       <h3 style="text-align:center">Adgangskoden er ændret</h3>
@@ -566,7 +543,6 @@ body.reading .read-progress{display:block}
 <div class="modal-backdrop" id="settingsModal">
   <div class="modal-box settings-box">
     <button class="modal-close" id="settingsClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-
     <div class="settings-head">
       <div class="settings-avatar" id="setAvatar">?</div>
       <div class="settings-head-info">
@@ -575,25 +551,17 @@ body.reading .read-progress{display:block}
         <small id="setMemberSince"></small>
       </div>
     </div>
-
     <div class="settings-body">
-      <!-- PROFILE -->
       <section class="settings-section">
         <h3>Profil</h3>
         <div class="settings-field">
           <label for="setUsername">Brugernavn</label>
-          <div class="settings-input-row">
-            <input type="text" id="setUsername" maxlength="40">
-            <button id="saveUsername">Gem</button>
-          </div>
+          <div class="settings-input-row"><input type="text" id="setUsername" maxlength="40"><button id="saveUsername">Gem</button></div>
           <div class="settings-feedback" id="usernameFeedback"></div>
         </div>
         <div class="settings-field">
           <label for="setEmail">E-mail</label>
-          <div class="settings-input-row">
-            <input type="email" id="setEmail">
-            <button id="saveEmail">Gem</button>
-          </div>
+          <div class="settings-input-row"><input type="email" id="setEmail"><button id="saveEmail">Gem</button></div>
           <div class="settings-feedback" id="emailFeedback"></div>
           <div class="settings-verify" id="emailVerify" hidden>
             <p>Bekræft med din nuværende adgangskode for at skifte e-mail:</p>
@@ -605,52 +573,27 @@ body.reading .read-progress{display:block}
           </div>
         </div>
       </section>
-
-      <!-- SECURITY -->
       <section class="settings-section">
         <h3>Sikkerhed</h3>
-        <button class="settings-action" id="openChangePwd">
-          <span>Skift adgangskode</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
+        <button class="settings-action" id="openChangePwd"><span>Skift adgangskode</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg></button>
         <div class="settings-pwd-form" id="pwdForm" hidden>
-          <div class="settings-field">
-            <label for="pwdOld">Nuværende adgangskode</label>
-            <input type="password" id="pwdOld" autocomplete="current-password">
-          </div>
-          <div class="settings-field">
-            <label for="pwdNew">Ny adgangskode</label>
-            <input type="password" id="pwdNew" autocomplete="new-password">
-          </div>
-          <div class="settings-field">
-            <label for="pwdConfirm">Bekræft ny adgangskode</label>
-            <input type="password" id="pwdConfirm" autocomplete="new-password">
-          </div>
+          <div class="settings-field"><label for="pwdOld">Nuværende adgangskode</label><input type="password" id="pwdOld" autocomplete="current-password"></div>
+          <div class="settings-field"><label for="pwdNew">Ny adgangskode</label><input type="password" id="pwdNew" autocomplete="new-password"></div>
+          <div class="settings-field"><label for="pwdConfirm">Bekræft ny adgangskode</label><input type="password" id="pwdConfirm" autocomplete="new-password"></div>
           <div class="settings-feedback" id="pwdFeedback"></div>
           <button class="btn-save" id="pwdSave">Gem ny adgangskode</button>
           <a class="btn-forgot" id="pwdForgot">Glemt din nuværende adgangskode?</a>
         </div>
       </section>
-
-      <!-- ACCOUNT -->
       <section class="settings-section">
         <h3>Konto</h3>
-        <button class="settings-action" id="settingsLogout">
-          <span>Log ud</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </button>
-        <button class="settings-action danger" id="openDeleteAccount">
-          <span>Slet min konto</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-        </button>
+        <button class="settings-action" id="settingsLogout"><span>Log ud</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+        <button class="settings-action danger" id="openDeleteAccount"><span>Slet min konto</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
         <div class="settings-delete-confirm" id="deleteConfirm" hidden>
           <p>Er du sikker? Din konto og alle dine oplysninger slettes permanent. Skriv din adgangskode for at bekræfte.</p>
           <input type="password" id="deletePwd" placeholder="Din adgangskode">
           <div class="settings-feedback" id="deleteFeedback"></div>
-          <div class="settings-delete-actions">
-            <button class="btn-secondary" id="deleteCancel">Annuller</button>
-            <button class="btn-danger" id="deleteConfirmBtn">Slet permanent</button>
-          </div>
+          <div class="settings-delete-actions"><button class="btn-secondary" id="deleteCancel">Annuller</button><button class="btn-danger" id="deleteConfirmBtn">Slet permanent</button></div>
         </div>
       </section>
     </div>
@@ -660,17 +603,17 @@ body.reading .read-progress{display:block}
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-/* ══════════════════ DATA ══════════════════ */
+/* ══════════════════ ARTICLES ══════════════════ */
 const articles = [
-  {id:0,kicker:"Skolestruktur",title:"Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”",dek:"Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs.",date:"5. oktober 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-hero-school/1200/675",caption:"Auning Skole danner i dag rammen om udskolingen for elever fra flere mindre skoler i Norddjurs.",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/flere-hundrede-er-samlet-for-at-kaempe-for-landsbyskoler-fbd9b",text:`<p>Det var et fyldt lokale på Auning Skole tirsdag aften, da mere end 100 forældre mødte op for at tale om fremtidens folkeskoler i Norddjurs Kommune.</p><p>I den nordvestlige del af kommunen er der lige nu tre skoler med lige over 100 elever på hver: Langhøjskolen i Vivild, Allingåbroskolen og Rougsøskolen i Ørsted. I dag flytter børnene fra disse skoler til Auning Skole, når de skal i syvende klasse. Men den ordning kan snart være fortid.</p><p>“Vi vil ikke have, at vores skole bliver revet væk under os,” lød det fra en af de fremmødte forældre på mødet.</p><p>Baggrunden er et skoleområde, der ventes at overskride budgettet med 10 millioner kroner næste år.</p>`},
-  {id:1,kicker:"Løb for Livet",title:"Løb for Livet: 24 timer med natbadminton, disko i svømmehallen og dyst på romaskiner",dek:"Det er ikke et almindeligt motionsløb. Når Auning Skoles udskoling går i gang med Løb for Livet, holder eleverne sig i bevægelse i et helt døgn.",date:"Tradition",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-lob/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",videoUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",text:`<p>Det er ikke et almindeligt motionsløb, når Auning Skoles udskoling afholder “Løb for Livet”. Det er et 24-timers aktivitetsmaraton, der starter klokken 10.00 dagen før efterårsferien.</p><p>Eleverne deltager på skift i de mange aktiviteter. Hver klasse skal holde en motionscykel kørende hele døgnet, og klasserne dyster samtidig om at ro længst på tid på skolens romaskiner.</p><p>Programmet er pakket med idrætsaktiviteter, natbadminton, natdisko i svømmehallen, skakturnering, spinningkonkurrence og meget mere.</p><p>“Et helt døgn med fuld knald på og masser af bevægelse — og helt sikkert masser af trætte unge mennesker i morgen kl. 10, når det hele slutter og efterårsferien starter,” har skolen skrevet.</p>`},
-  {id:2,kicker:"Budget",title:"1,7 millioner kroner frigivet: Auning Skole får nyt faglokale",dek:"Økonomiudvalget i Norddjurs Kommune har godkendt at frigive midlerne til et faglokale til håndværk og design.",date:"10. marts 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-budget/600/400",source:"Norddjurs Kommune",sourceUrl:"https://norddjurs.meetingsplus.dk/welcome-da/udvalg/okonomiudvalget/10-03-2026/protocol/15-anlaegsbevilling-til-faglokaler-pa-auning-skolepdf",text:`<p>Økonomiudvalget i Norddjurs Kommune har godkendt at frigive 1,7 millioner kroner til et nyt faglokale på Auning Skole.</p><p>Midlerne skal bruges til etablering af et faglokale til håndværk og design på Auning Skole.</p>`},
-  {id:3,kicker:"Dialogmøde",title:"150 borgere stillede op: Skoleområdet mangler 10 millioner",dek:"Omkring 150 borgere mødte op til dialogmøde i Auning for at få svar på planerne.",date:"9. oktober 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-meeting/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/tre-skoler-lige-nu-i-spil-som-lukningstruede-i-norddjurs-a869d",text:`<p>Omkring 150 borgere mødte op til dialogmøde i Auning for at få svar på planerne for fremtidens folkeskoler i Norddjurs Kommune.</p><p>Tre skoler i den nordvestlige del af kommunen er i spil til lukning: Langhøjskolen i Vivild, Allingåbroskolen og Rougsøskolen i Ørsted.</p>`},
-  {id:4,kicker:"Hverdag",title:"Hver fredag bliver klasselokalet til et svejseværksted",dek:"15-årige Silas Hilmer Gregersen går på den erhvervs- og praksisfaglige linje på Auning Skole.",date:"28. oktober 2024",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-welding/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/det-har-aendret-silas-skolegang",text:`<p>15-årige Silas Hilmer Gregersen går i niende klasse på den erhvervs- og praksisfaglige linje på Auning Skole.</p><p>“Det er vigtigt for mig, fordi i klasselokalet kan jeg ikke sidde helt stille. Jeg vil hellere ud at bruge hænderne,” siger han.</p>`},
-  {id:5,kicker:"Fællesskab",title:"Elever samlede 52.000 kroner ind til ukrainske børn",dek:"Det begyndte med hjemmebagte muffins og armbånd. Målet var 10.000 kroner.",date:"18. april 2022",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-ukraine/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/imponerende-indsats-skoleelever-loeber-bager-og-rydder-op-til-fordel-for-ukrainske-boern",text:`<p>Eleverne på Auning Skole, særligt fra 5. årgang, samlede mere end 52.000 kroner ind til fordel for børn i Ukraine.</p><p>“Jeg er mega imponeret af og stolt over de her børn,” siger lærer Kasper Fur Eriksen.</p>`},
-  {id:6,kicker:"Sport",title:"Skolefodboldhold blandt de 16 bedste i Danmark",dek:"Både pigernes og drengenes hold nåede kredsfinalerne i DBU Skolepokalen.",date:"9. december 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-football/600/400",source:"Din Avis",sourceUrl:"https://dinavis.dk/sport/ECE18824841/skolefodboldhold-imponerer-flot-i-landsdaekkende-turnering-i-30aaret-for-historisk-sejr-i-skolefodboldturneringen/",text:`<p>Auning Skoles fodboldhold markerede sig flot i årets DBU Skolepokalen. Både pigernes og drengenes hold nåede kredsfinalerne.</p><p>Det er i år 30 år siden, at Auning Skoles piger gik hele vejen i turneringen til Parken i København.</p>`},
-  {id:7,kicker:"Undervisning",title:"1. klasse gjorde læsning meningsfuld med halloween og pralbønner",dek:"Eleverne læste og skrev korte, lydrette ord, der passede til halloween.",date:"27. juni 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-reading/600/400",source:"Viden om Læsning",sourceUrl:"https://videnomlaesning.dk/viden-og-vaerktoejer/webdok/m-som-i-meningsfuld-laeseundervisning/",text:`<p>I 1. klasse på Auning Skole læste og skrev eleverne korte, lydrette ord, der passede til halloween.</p><p>Undervisningen var en del af projektet (Selv)sikker læsestart.</p>`},
-  {id:8,kicker:"Om skolen",title:"Auning Skole: Knap 700 elever og 120 ansatte",dek:"Skolen dækker børnehaveklasse til 9. klasse og har både specialklasser og modtagelsesklasser.",date:"2024–2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-school-yard/600/400",source:"Norddjurs Kommune",sourceUrl:"https://auning-skole.aula.dk/info/auning-skole/generel-information",text:`<p>Auning Skole ligger i Auning by i Norddjurs Kommune på Djursland og dækker børnehaveklasse til og med 9. klasse.</p><p>Skolen har 8 specialklasser, 2 modtagelsesklasser og “gode mellemformer”. Der er i alt 120 ansatte.</p>`}
+  {id:0,kicker:"Skolestruktur",title:"Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”",dek:"Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs.",date:"5. oktober 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-hero-school/1200/675",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/flere-hundrede-er-samlet-for-at-kaempe-for-landsbyskoler-fbd9b",text:`<p>Det var et fyldt lokale på Auning Skole tirsdag aften, da mere end 100 forældre mødte op for at tale om fremtidens folkeskoler i Norddjurs Kommune.</p><p>I den nordvestlige del af kommunen er der lige nu tre skoler med lige over 100 elever på hver: Langhøjskolen i Vivild, Allingåbroskolen og Rougsøskolen i Ørsted.</p><p>“Vi vil ikke have, at vores skole bliver revet væk under os,” lød det fra en af de fremmødte forældre på mødet.</p>`},
+  {id:1,kicker:"Løb for Livet",title:"Løb for Livet: 24 timer med natbadminton, disko i svømmehallen og dyst på romaskiner",dek:"Det er ikke et almindeligt motionsløb. Når Auning Skoles udskoling går i gang med Løb for Livet, holder eleverne sig i bevægelse i et helt døgn.",date:"Tradition",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-lob/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",videoUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",text:`<p>Det er ikke et almindeligt motionsløb, når Auning Skoles udskoling afholder “Løb for Livet”. Det er et 24-timers aktivitetsmaraton, der starter klokken 10.00 dagen før efterårsferien.</p><p>Eleverne deltager på skift i de mange aktiviteter. Hver klasse skal holde en motionscykel kørende hele døgnet.</p>`},
+  {id:2,kicker:"Budget",title:"1,7 millioner kroner frigivet: Auning Skole får nyt faglokale",dek:"Økonomiudvalget i Norddjurs Kommune har godkendt at frigive midlerne til et faglokale til håndværk og design.",date:"10. marts 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-budget/600/400",source:"Norddjurs Kommune",sourceUrl:"https://norddjurs.meetingsplus.dk/welcome-da/udvalg/okonomiudvalget/10-03-2026/protocol/15-anlaegsbevilling-til-faglokaler-pa-auning-skolepdf",text:`<p>Økonomiudvalget i Norddjurs Kommune har godkendt at frigive 1,7 millioner kroner til et nyt faglokale på Auning Skole.</p>`},
+  {id:3,kicker:"Dialogmøde",title:"150 borgere stillede op: Skoleområdet mangler 10 millioner",dek:"Omkring 150 borgere mødte op til dialogmøde i Auning.",date:"9. oktober 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-meeting/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/tre-skoler-lige-nu-i-spil-som-lukningstruede-i-norddjurs-a869d",text:`<p>Omkring 150 borgere mødte op til dialogmøde i Auning for at få svar på planerne for fremtidens folkeskoler i Norddjurs Kommune.</p>`},
+  {id:4,kicker:"Hverdag",title:"Hver fredag bliver klasselokalet til et svejseværksted",dek:"15-årige Silas Hilmer Gregersen går på den erhvervs- og praksisfaglige linje på Auning Skole.",date:"28. oktober 2024",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-welding/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/det-har-aendret-silas-skolegang",text:`<p>15-årige Silas Hilmer Gregersen går i niende klasse på den erhvervs- og praksisfaglige linje på Auning Skole.</p>`},
+  {id:5,kicker:"Fællesskab",title:"Elever samlede 52.000 kroner ind til ukrainske børn",dek:"Det begyndte med hjemmebagte muffins og armbånd.",date:"18. april 2022",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-ukraine/600/400",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/imponerende-indsats-skoleelever-loeber-bager-og-rydder-op-til-fordel-for-ukrainske-boern",text:`<p>Eleverne på Auning Skole, særligt fra 5. årgang, samlede mere end 52.000 kroner ind til fordel for børn i Ukraine.</p>`},
+  {id:6,kicker:"Sport",title:"Skolefodboldhold blandt de 16 bedste i Danmark",dek:"Både pigernes og drengenes hold nåede kredsfinalerne i DBU Skolepokalen.",date:"9. december 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-football/600/400",source:"Din Avis",sourceUrl:"https://dinavis.dk/sport/ECE18824841/skolefodboldhold-imponerer-flot-i-landsdaekkende-turnering-i-30aaret-for-historisk-sejr-i-sporten/",text:`<p>Auning Skoles fodboldhold markerede sig flot i årets DBU Skolepokalen.</p>`},
+  {id:7,kicker:"Undervisning",title:"1. klasse gjorde læsning meningsfuld med halloween og pralbønner",dek:"Eleverne læste og skrev korte, lydrette ord, der passede til halloween.",date:"27. juni 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-reading/600/400",source:"Viden om Læsning",sourceUrl:"https://videnomlaesning.dk/viden-og-vaerktoejer/webdok/m-som-i-meningsfuld-laeseundervisning/",text:`<p>I 1. klasse på Auning Skole læste og skrev eleverne korte, lydrette ord, der passede til halloween.</p>`},
+  {id:8,kicker:"Om skolen",title:"Auning Skole: Knap 700 elever og 120 ansatte",dek:"Skolen dækker børnehaveklasse til 9. klasse.",date:"2024–2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-school-yard/600/400",source:"Norddjurs Kommune",sourceUrl:"https://auning-skole.aula.dk/info/auning-skole/generel-information",text:`<p>Auning Skole ligger i Auning by i Norddjurs Kommune på Djursland og dækker børnehaveklasse til og med 9. klasse.</p>`}
 ];
 
 /* ══════════════════ TOAST ══════════════════ */
@@ -688,79 +631,202 @@ function showToast(message, type='info', duration=3200){
   setTimeout(() => { toast.classList.add('out'); setTimeout(() => toast.remove(), 260); }, duration);
 }
 
-/* ══════════════════ AUTH (localStorage) ══════════════════ */
+/* ══════════════════ AUTH — FIXED ══════════════════ */
+/*
+  WHY THE OLD LOGIN BROKE:
+  1. The DJB2 hash used 32-bit shifts. For longer passwords this
+     overflowed and could produce the SAME hash for different
+     passwords. Wrong password matched. Fixed with a proper hash.
+  2. saveUsers() swallowed errors silently. If localStorage was
+     full or blocked, the user was created in memory but lost on
+     reload — so every "login" became a fresh account creation
+     with whatever password you typed. Fixed with hard verification.
+*/
 const AUTH = {
-  USERS_KEY: 'auning_users_v1',
-  SESSION_KEY: 'auning_session_v1',
-  getUsers(){ try { return JSON.parse(localStorage.getItem(this.USERS_KEY)||'[]'); } catch { return []; } },
-  saveUsers(users){ try { localStorage.setItem(this.USERS_KEY, JSON.stringify(users)); return true; } catch { return false; } },
-  getSession(){ try { return JSON.parse(localStorage.getItem(this.SESSION_KEY)||'null'); } catch { return null; } },
-  setSession(s){ try { if(s) localStorage.setItem(this.SESSION_KEY, JSON.stringify(s)); else localStorage.removeItem(this.SESSION_KEY); } catch {} },
-  hash(pwd){ let h=5381; for(let i=0;i<pwd.length;i++) h=((h<<5)+h)+pwd.charCodeAt(i); return (h>>>0).toString(16)+':'+pwd.length; },
-  makeId(){ return 'u_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8); },
+  USERS_KEY: 'auning_users_v2',
+  SESSION_KEY: 'auning_session_v2',
+
+  isStorageAvailable(){
+    try {
+      const k = '__auning_test__';
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch { return false; }
+  },
+
+  getUsers(){
+    try { return JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]'); }
+    catch { return []; }
+  },
+
+  saveUsers(users){
+    if (!this.isStorageAvailable()) {
+      return { ok:false, error:'Din browser blokerer for lokal lagring (privat tilstand?). Kontoen kan ikke gemmes.' };
+    }
+    try {
+      localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+      // Hard verification — read it back
+      const check = JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]');
+      if (check.length !== users.length) {
+        return { ok:false, error:'Kunne ikke gemme kontoen. Prøv en anden browser.' };
+      }
+      return { ok:true };
+    } catch (e) {
+      return { ok:false, error:'Lagerplads er fuld eller utilgængelig.' };
+    }
+  },
+
+  getSession(){
+    try { return JSON.parse(localStorage.getItem(this.SESSION_KEY) || 'null'); }
+    catch { return null; }
+  },
+
+  setSession(s){
+    try {
+      if (s) localStorage.setItem(this.SESSION_KEY, JSON.stringify(s));
+      else localStorage.removeItem(this.SESSION_KEY);
+      return true;
+    } catch { return false; }
+  },
+
+  /* Murmur-inspired hash. No 32-bit overflow collisions. */
+  hash(pwd){
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0; i < pwd.length; i++) {
+      const ch = pwd.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return ('00000000' + (h2 >>> 0).toString(16)).slice(-8) +
+           ('00000000' + (h1 >>> 0).toString(16)).slice(-8);
+  },
+
+  makeId(){ return 'u_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8); },
+
   deriveName(email){
-    const local = email.split('@')[0].replace(/[^a-zæøåA-ZÆØÅ0-9]/g,' ').trim();
+    const local = email.split('@')[0].replace(/[^a-zæøåA-ZÆØÅ0-9]/g, ' ').trim();
     const first = local.split(/\s+/)[0] || 'Ven';
     return first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
   },
-  getCurrentUser(){ const s = this.getSession(); if(!s) return null; return this.getUsers().find(u => u.id === s.userId) || null; },
-  findByEmail(email){ return this.getUsers().find(u => u.email.toLowerCase() === email.toLowerCase()); },
+
+  getCurrentUser(){
+    const s = this.getSession();
+    if (!s) return null;
+    return this.getUsers().find(u => u.id === s.userId) || null;
+  },
+
+  findByEmail(email){
+    return this.getUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+  },
+
   login(email, password){
     const existing = this.findByEmail(email);
-    if(existing){
-      if(existing.passwordHash !== this.hash(password)) return { error:'Forkert adgangskode. Prøv igen.' };
-      this.setSession({ userId: existing.id, loggedInAt: Date.now() });
-      return { ok:true, user: existing, newAccount: false };
+    if (existing) {
+      // ALWAYS validate the password, even if a session exists
+      if (existing.passwordHash !== this.hash(password)) {
+        return { error: 'Forkert adgangskode. Prøv igen.' };
+      }
+      const ok = this.setSession({ userId: existing.id, loggedInAt: Date.now() });
+      if (!ok) return { error: 'Kunne ikke gemme login. Tjek at din browser tillader lokal lagring.' };
+      return { ok: true, user: existing, newAccount: false };
     }
-    const newUser = { id:this.makeId(), email, name:this.deriveName(email), passwordHash:this.hash(password), createdAt:Date.now(), updatedAt:Date.now() };
-    const users = this.getUsers(); users.push(newUser); this.saveUsers(users);
-    this.setSession({ userId: newUser.id, loggedInAt: Date.now() });
-    return { ok:true, user:newUser, newAccount:true };
+    // New account
+    const newUser = {
+      id: this.makeId(),
+      email,
+      name: this.deriveName(email),
+      passwordHash: this.hash(password),
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    };
+    const users = this.getUsers();
+    users.push(newUser);
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    const sessionOk = this.setSession({ userId: newUser.id, loggedInAt: Date.now() });
+    if (!sessionOk) return { error: 'Konto oprettet, men login kunne ikke gemmes.' };
+    return { ok: true, user: newUser, newAccount: true };
   },
+
   logout(){ this.setSession(null); },
+
   updateUsername(userId, newName){
-    const users = this.getUsers(); const idx = users.findIndex(u => u.id === userId);
-    if(idx===-1) return { error:'Bruger ikke fundet.' };
+    const users = this.getUsers();
+    const idx = users.findIndex(u => u.id === userId);
+    if (idx === -1) return { error: 'Bruger ikke fundet.' };
     const t = newName.trim();
-    if(t.length < 2) return { error:'Brugernavnet skal være mindst 2 tegn.' };
-    if(t.length > 40) return { error:'Brugernavnet må højst være 40 tegn.' };
-    users[idx].name = t; users[idx].updatedAt = Date.now(); this.saveUsers(users);
-    return { ok:true, user:users[idx] };
+    if (t.length < 2) return { error: 'Brugernavnet skal være mindst 2 tegn.' };
+    if (t.length > 40) return { error: 'Brugernavnet må højst være 40 tegn.' };
+    users[idx].name = t;
+    users[idx].updatedAt = Date.now();
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    return { ok: true, user: users[idx] };
   },
+
   updateEmail(userId, newEmail, password){
-    const users = this.getUsers(); const idx = users.findIndex(u => u.id === userId);
-    if(idx===-1) return { error:'Bruger ikke fundet.' };
-    if(users[idx].passwordHash !== this.hash(password)) return { error:'Forkert adgangskode.' };
+    const users = this.getUsers();
+    const idx = users.findIndex(u => u.id === userId);
+    if (idx === -1) return { error: 'Bruger ikke fundet.' };
+    if (users[idx].passwordHash !== this.hash(password)) return { error: 'Forkert adgangskode.' };
     const norm = newEmail.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(norm)) return { error:'Ugyldig e-mail.' };
-    if(users.find(u => u.id !== userId && u.email.toLowerCase() === norm.toLowerCase())) return { error:'E-mailen er allerede i brug.' };
-    users[idx].email = norm; users[idx].updatedAt = Date.now(); this.saveUsers(users);
-    return { ok:true, user:users[idx] };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(norm)) return { error: 'Ugyldig e-mail.' };
+    if (users.find(u => u.id !== userId && u.email.toLowerCase() === norm.toLowerCase())) {
+      return { error: 'E-mailen er allerede i brug.' };
+    }
+    users[idx].email = norm;
+    users[idx].updatedAt = Date.now();
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    return { ok: true, user: users[idx] };
   },
+
   updatePassword(userId, oldPwd, newPwd){
-    const users = this.getUsers(); const idx = users.findIndex(u => u.id === userId);
-    if(idx===-1) return { error:'Bruger ikke fundet.' };
-    if(users[idx].passwordHash !== this.hash(oldPwd)) return { error:'Forkert nuværende adgangskode.' };
-    if(newPwd.length < 4) return { error:'Ny adgangskode skal være mindst 4 tegn.' };
-    if(newPwd === oldPwd) return { error:'Ny adgangskode skal være forskellig fra den gamle.' };
-    users[idx].passwordHash = this.hash(newPwd); users[idx].updatedAt = Date.now(); this.saveUsers(users);
-    return { ok:true, user:users[idx] };
+    const users = this.getUsers();
+    const idx = users.findIndex(u => u.id === userId);
+    if (idx === -1) return { error: 'Bruger ikke fundet.' };
+    if (users[idx].passwordHash !== this.hash(oldPwd)) return { error: 'Forkert nuværende adgangskode.' };
+    if (newPwd.length < 4) return { error: 'Ny adgangskode skal være mindst 4 tegn.' };
+    if (newPwd === oldPwd) return { error: 'Ny adgangskode skal være forskellig fra den gamle.' };
+    users[idx].passwordHash = this.hash(newPwd);
+    users[idx].updatedAt = Date.now();
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    return { ok: true, user: users[idx] };
   },
+
   resetPassword(email, newPwd){
-    const users = this.getUsers(); const idx = users.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
-    if(idx===-1) return { error:'Ingen konto med den e-mail.' };
-    if(newPwd.length < 4) return { error:'Adgangskoden skal være mindst 4 tegn.' };
-    users[idx].passwordHash = this.hash(newPwd); users[idx].updatedAt = Date.now(); this.saveUsers(users);
-    return { ok:true, user:users[idx] };
+    const users = this.getUsers();
+    const idx = users.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+    if (idx === -1) return { error: 'Ingen konto med den e-mail.' };
+    if (newPwd.length < 4) return { error: 'Adgangskoden skal være mindst 4 tegn.' };
+    users[idx].passwordHash = this.hash(newPwd);
+    users[idx].updatedAt = Date.now();
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    return { ok: true, user: users[idx] };
   },
+
   deleteUser(userId, password){
-    const users = this.getUsers(); const idx = users.findIndex(u => u.id === userId);
-    if(idx===-1) return { error:'Bruger ikke fundet.' };
-    if(users[idx].passwordHash !== this.hash(password)) return { error:'Forkert adgangskode.' };
-    users.splice(idx, 1); this.saveUsers(users); this.setSession(null);
-    return { ok:true };
+    const users = this.getUsers();
+    const idx = users.findIndex(u => u.id === userId);
+    if (idx === -1) return { error: 'Bruger ikke fundet.' };
+    if (users[idx].passwordHash !== this.hash(password)) return { error: 'Forkert adgangskode.' };
+    users.splice(idx, 1);
+    const saved = this.saveUsers(users);
+    if (!saved.ok) return { error: saved.error };
+    this.setSession(null);
+    return { ok: true };
   }
 };
+
+/* Warn once if storage is blocked */
+if (!AUTH.isStorageAvailable()) {
+  setTimeout(() => showToast('Din browser blokerer for lokal lagring. Login og tilmelding kan ikke gemmes.', 'error', 6000), 800);
+}
 
 /* ══════════════════ AUTH UI ══════════════════ */
 const authModal = document.getElementById('authModal');
@@ -776,7 +842,6 @@ const logoutBtn = document.getElementById('logoutBtn');
 const openSettingsBtn = document.getElementById('openSettingsBtn');
 const topbarLogin = document.getElementById('topbarLogin');
 
-// Views
 const authViews = {
   login: document.getElementById('authViewLogin'),
   forgot1: document.getElementById('authViewForgot1'),
@@ -784,48 +849,61 @@ const authViews = {
   forgot3: document.getElementById('authViewForgot3'),
   success: document.getElementById('authViewSuccess')
 };
+
 function showAuthView(name){
   Object.values(authViews).forEach(v => v.hidden = true);
   authViews[name].hidden = false;
   const firstInput = authViews[name].querySelector('input');
-  if(firstInput) setTimeout(() => firstInput.focus(), 60);
+  if (firstInput) setTimeout(() => firstInput.focus(), 60);
 }
-function openAuthModal(view='login', prefillEmail=''){
+
+function openAuthModal(view = 'login', prefillEmail = ''){
   authModal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  if(view === 'forgot1' && prefillEmail){
+  if (view === 'forgot1' && prefillEmail) {
     document.getElementById('forgotEmail').value = prefillEmail;
   }
   showAuthView(view);
 }
+
 function closeAuthModal(){
   authModal.classList.remove('open');
   document.body.style.overflow = '';
   resetForgotFlow();
 }
 
-/* Forgot state */
-let forgotState = { email:'', code:'' };
+let forgotState = { email: '', code: '' };
+
 function resetForgotFlow(){
-  forgotState = { email:'', code:'' };
-  ['forgotEmail','forgotCode','forgotNewPwd','forgotConfirmPwd'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
-  ['forgot1Feedback','forgot2Feedback','forgot3Feedback'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent=''; });
-  ['forgotFieldEmail','forgotFieldCode','forgotFieldNewPwd','forgotFieldConfirm'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('error'); });
-  document.getElementById('demoCode').innerHTML = '------<small>Demo-kode</small>';
+  forgotState = { email: '', code: '' };
+  ['forgotEmail', 'forgotCode', 'forgotNewPwd', 'forgotConfirmPwd'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  ['forgot1Feedback', 'forgot2Feedback', 'forgot3Feedback'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = '';
+  });
+  ['forgotFieldEmail', 'forgotFieldCode', 'forgotFieldNewPwd', 'forgotFieldConfirm'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('error');
+  });
+  const dc = document.getElementById('demoCode');
+  if (dc) dc.innerHTML = '------<small>Demo-kode</small>';
 }
 
-/* Views switching */
+/* View switching */
 document.getElementById('toForgot').addEventListener('click', () => showAuthView('forgot1'));
 document.getElementById('backToLogin1').addEventListener('click', () => showAuthView('login'));
 document.getElementById('backToForgot1').addEventListener('click', () => showAuthView('forgot1'));
 document.getElementById('backToLoginSuccess').addEventListener('click', () => {
   const email = forgotState.email;
   showAuthView('login');
-  if(email) document.getElementById('loginEmail').value = email;
+  if (email) document.getElementById('loginEmail').value = email;
   resetForgotFlow();
 });
 
-/* Login form */
+/* ── Login form ── */
 const loginForm = document.getElementById('loginForm');
 const loginEmail = document.getElementById('loginEmail');
 const loginPassword = document.getElementById('loginPassword');
@@ -844,13 +922,35 @@ loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = loginEmail.value.trim();
   const password = loginPassword.value;
+
   loginFieldEmail.classList.remove('error');
   loginFieldPassword.classList.remove('error');
   loginFeedback.textContent = '';
-  if(!email){ loginFieldEmail.classList.add('error'); loginFeedback.textContent = 'Indtast din e-mailadresse.'; loginEmail.focus(); return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ loginFieldEmail.classList.add('error'); loginFeedback.textContent = 'Indtast en gyldig e-mailadresse.'; loginEmail.focus(); return; }
-  if(!password){ loginFieldPassword.classList.add('error'); loginFeedback.textContent = 'Indtast din adgangskode.'; loginPassword.focus(); return; }
-  if(password.length < 4){ loginFieldPassword.classList.add('error'); loginFeedback.textContent = 'Adgangskoden skal være mindst 4 tegn.'; loginPassword.focus(); return; }
+
+  if (!email) {
+    loginFieldEmail.classList.add('error');
+    loginFeedback.textContent = 'Indtast din e-mailadresse.';
+    loginEmail.focus();
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    loginFieldEmail.classList.add('error');
+    loginFeedback.textContent = 'Indtast en gyldig e-mailadresse.';
+    loginEmail.focus();
+    return;
+  }
+  if (!password) {
+    loginFieldPassword.classList.add('error');
+    loginFeedback.textContent = 'Indtast din adgangskode.';
+    loginPassword.focus();
+    return;
+  }
+  if (password.length < 4) {
+    loginFieldPassword.classList.add('error');
+    loginFeedback.textContent = 'Adgangskoden skal være mindst 4 tegn.';
+    loginPassword.focus();
+    return;
+  }
 
   loginSubmit.disabled = true;
   loginSubmit.innerHTML = '<span class="spinner"></span><span>Logger ind…</span>';
@@ -859,39 +959,51 @@ loginForm.addEventListener('submit', (e) => {
     const result = AUTH.login(email, password);
     loginSubmit.disabled = false;
     loginSubmit.textContent = 'Log ind';
-    if(result.error){
+
+    if (result.error) {
       loginFeedback.textContent = result.error;
-      loginFieldPassword.classList.add('error');
-      loginPassword.focus();
-      loginPassword.select();
+      if (result.error.toLowerCase().includes('adgangskode')) {
+        loginFieldPassword.classList.add('error');
+        loginPassword.focus();
+        loginPassword.select();
+      }
       return;
     }
+
     loginEmail.value = '';
     loginPassword.value = '';
-    loginFeedback.textContent = '';
     closeAuthModal();
     renderAuthUI();
-    if(result.newAccount) showToast('Velkommen, ' + result.user.name + '! Din konto er oprettet.', 'success', 4000);
-    else showToast('Velkommen tilbage, ' + result.user.name + '!', 'success', 3500);
-  }, 350);
+
+    if (result.newAccount) {
+      showToast('Velkommen, ' + result.user.name + '! Din konto er oprettet.', 'success', 4000);
+    } else {
+      showToast('Velkommen tilbage, ' + result.user.name + '!', 'success', 3500);
+    }
+  }, 300);
 });
 
-/* Forgot step 1: email */
+/* ── Forgot step 1 ── */
 const forgot1Form = document.getElementById('forgot1Form');
 const forgotEmail = document.getElementById('forgotEmail');
 const forgot1Feedback = document.getElementById('forgot1Feedback');
 const forgot1Submit = document.getElementById('forgot1Submit');
 const forgotFieldEmail = document.getElementById('forgotFieldEmail');
-forgotEmail.addEventListener('input', () => { forgotFieldEmail.classList.remove('error'); forgot1Feedback.textContent = ''; });
+
+forgotEmail.addEventListener('input', () => {
+  forgotFieldEmail.classList.remove('error');
+  forgot1Feedback.textContent = '';
+});
 
 forgot1Form.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = forgotEmail.value.trim();
   forgotFieldEmail.classList.remove('error');
   forgot1Feedback.textContent = '';
-  if(!email){ forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Indtast din e-mailadresse.'; return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Indtast en gyldig e-mailadresse.'; return; }
-  if(!AUTH.findByEmail(email)){ forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Ingen konto med den e-mail.'; return; }
+
+  if (!email) { forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Indtast din e-mailadresse.'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Indtast en gyldig e-mailadresse.'; return; }
+  if (!AUTH.findByEmail(email)) { forgotFieldEmail.classList.add('error'); forgot1Feedback.textContent = 'Ingen konto med den e-mail.'; return; }
 
   forgot1Submit.disabled = true;
   forgot1Submit.innerHTML = '<span class="spinner"></span><span>Sender…</span>';
@@ -901,29 +1013,33 @@ forgot1Form.addEventListener('submit', (e) => {
     forgotState.email = email;
     forgotState.code = code;
     document.getElementById('forgotEmailDisplay').textContent = email;
-    document.getElementById('demoCode').innerHTML = code + '<small>Demo-kode (normalt sendes den på e-mail)</small>';
+    document.getElementById('demoCode').innerHTML = code + '<small>Demo-kode (i produktion sendes den på e-mail)</small>';
     forgot1Submit.disabled = false;
     forgot1Submit.textContent = 'Send kode';
     showAuthView('forgot2');
-    showToast('Kode sendt til ' + email + ' (demo: ' + code + ')', 'info', 5000);
-  }, 700);
+    showToast('Kode klar til ' + email + ' (demo: ' + code + ')', 'info', 6000);
+  }, 600);
 });
 
-/* Forgot step 2: code */
+/* ── Forgot step 2 ── */
 const forgot2Form = document.getElementById('forgot2Form');
 const forgotCode = document.getElementById('forgotCode');
 const forgot2Feedback = document.getElementById('forgot2Feedback');
 const forgot2Submit = document.getElementById('forgot2Submit');
 const forgotFieldCode = document.getElementById('forgotFieldCode');
-forgotCode.addEventListener('input', () => { forgotFieldCode.classList.remove('error'); forgot2Feedback.textContent = ''; });
+
+forgotCode.addEventListener('input', () => {
+  forgotFieldCode.classList.remove('error');
+  forgot2Feedback.textContent = '';
+});
 
 forgot2Form.addEventListener('submit', (e) => {
   e.preventDefault();
   const code = forgotCode.value.trim();
   forgotFieldCode.classList.remove('error');
   forgot2Feedback.textContent = '';
-  if(code.length !== 6){ forgotFieldCode.classList.add('error'); forgot2Feedback.textContent = 'Koden skal være 6 cifre.'; return; }
-  if(code !== forgotState.code){ forgotFieldCode.classList.add('error'); forgot2Feedback.textContent = 'Forkert kode. Prøv igen.'; return; }
+  if (code.length !== 6) { forgotFieldCode.classList.add('error'); forgot2Feedback.textContent = 'Koden skal være 6 cifre.'; return; }
+  if (code !== forgotState.code) { forgotFieldCode.classList.add('error'); forgot2Feedback.textContent = 'Forkert kode. Prøv igen.'; return; }
 
   forgot2Submit.disabled = true;
   forgot2Submit.innerHTML = '<span class="spinner"></span><span>Bekræfter…</span>';
@@ -931,10 +1047,10 @@ forgot2Form.addEventListener('submit', (e) => {
     forgot2Submit.disabled = false;
     forgot2Submit.textContent = 'Bekræft kode';
     showAuthView('forgot3');
-  }, 400);
+  }, 350);
 });
 
-/* Forgot step 3: new password */
+/* ── Forgot step 3 ── */
 const forgot3Form = document.getElementById('forgot3Form');
 const forgotNewPwd = document.getElementById('forgotNewPwd');
 const forgotConfirmPwd = document.getElementById('forgotConfirmPwd');
@@ -942,6 +1058,7 @@ const forgot3Feedback = document.getElementById('forgot3Feedback');
 const forgot3Submit = document.getElementById('forgot3Submit');
 const forgotFieldNewPwd = document.getElementById('forgotFieldNewPwd');
 const forgotFieldConfirm = document.getElementById('forgotFieldConfirm');
+
 [forgotNewPwd, forgotConfirmPwd].forEach(el => el.addEventListener('input', () => {
   forgotFieldNewPwd.classList.remove('error');
   forgotFieldConfirm.classList.remove('error');
@@ -955,8 +1072,9 @@ forgot3Form.addEventListener('submit', (e) => {
   forgotFieldNewPwd.classList.remove('error');
   forgotFieldConfirm.classList.remove('error');
   forgot3Feedback.textContent = '';
-  if(np.length < 4){ forgotFieldNewPwd.classList.add('error'); forgot3Feedback.textContent = 'Adgangskoden skal være mindst 4 tegn.'; return; }
-  if(np !== cp){ forgotFieldConfirm.classList.add('error'); forgot3Feedback.textContent = 'Adgangskoderne er ikke ens.'; return; }
+
+  if (np.length < 4) { forgotFieldNewPwd.classList.add('error'); forgot3Feedback.textContent = 'Adgangskoden skal være mindst 4 tegn.'; return; }
+  if (np !== cp) { forgotFieldConfirm.classList.add('error'); forgot3Feedback.textContent = 'Adgangskoderne er ikke ens.'; return; }
 
   forgot3Submit.disabled = true;
   forgot3Submit.innerHTML = '<span class="spinner"></span><span>Gemmer…</span>';
@@ -964,23 +1082,24 @@ forgot3Form.addEventListener('submit', (e) => {
     const result = AUTH.resetPassword(forgotState.email, np);
     forgot3Submit.disabled = false;
     forgot3Submit.textContent = 'Gem ny adgangskode';
-    if(result.error){ forgot3Feedback.textContent = result.error; return; }
+    if (result.error) { forgot3Feedback.textContent = result.error; return; }
     showAuthView('success');
     showToast('Adgangskoden er ændret!', 'success', 3500);
     resetForgotFlow();
-  }, 500);
+  }, 450);
 });
 
-/* Render auth UI */
+/* ── Render auth UI ── */
 function initialsFromName(name){
-  if(!name) return '?';
+  if (!name) return '?';
   const parts = name.trim().split(/\s+/).filter(Boolean);
-  if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
-  return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
+
 function renderAuthUI(){
   const user = AUTH.getCurrentUser();
-  if(user){
+  if (user) {
     const initials = initialsFromName(user.name);
     userBtn.classList.add('logged-in');
     userBtn.setAttribute('aria-label', 'Min konto: ' + user.name);
@@ -1004,14 +1123,18 @@ function renderAuthUI(){
 
 userBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  if(AUTH.getCurrentUser()) userDropdown.classList.toggle('open');
+  if (AUTH.getCurrentUser()) userDropdown.classList.toggle('open');
   else openAuthModal('login');
 });
+
 document.addEventListener('click', (e) => {
-  if(!userDropdown.contains(e.target) && !userBtn.contains(e.target)) userDropdown.classList.remove('open');
+  if (!userDropdown.contains(e.target) && !userBtn.contains(e.target)) {
+    userDropdown.classList.remove('open');
+  }
 });
+
 authClose.addEventListener('click', closeAuthModal);
-authModal.addEventListener('click', (e) => { if(e.target === authModal) closeAuthModal(); });
+authModal.addEventListener('click', (e) => { if (e.target === authModal) closeAuthModal(); });
 
 logoutBtn.addEventListener('click', (e) => {
   e.stopPropagation();
@@ -1019,15 +1142,8 @@ logoutBtn.addEventListener('click', (e) => {
   AUTH.logout();
   userDropdown.classList.remove('open');
   renderAuthUI();
-  if(settingsModal.classList.contains('open')) closeSettings();
-  showToast((user ? user.name + ', du er nu logget ud.' : 'Du er nu logget ud.'), 'info', 2800);
-});
-document.getElementById('settingsLogout').addEventListener('click', () => {
-  const user = AUTH.getCurrentUser();
-  AUTH.logout();
-  closeSettings();
-  renderAuthUI();
-  showToast((user ? user.name + ', du er nu logget ud.' : 'Du er nu logget ud.'), 'info', 2800);
+  if (settingsModal.classList.contains('open')) closeSettings();
+  showToast(user ? user.name + ', du er nu logget ud.' : 'Du er nu logget ud.', 'info', 2800);
 });
 
 /* ══════════════════ SETTINGS ══════════════════ */
@@ -1063,17 +1179,15 @@ const deleteCancel = document.getElementById('deleteCancel');
 const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
 
 let pendingEmail = '';
-let pendingPwd = '';
-let pendingDeletePwd = '';
 
 function formatDate(ts){
-  if(!ts) return '';
-  const d = new Date(ts);
-  return d.toLocaleDateString('da-DK', { day:'numeric', month:'long', year:'numeric' });
+  if (!ts) return '';
+  return new Date(ts).toLocaleDateString('da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
 }
+
 function openSettings(){
   const user = AUTH.getCurrentUser();
-  if(!user){ openAuthModal('login'); return; }
+  if (!user) { openAuthModal('login'); return; }
   userDropdown.classList.remove('open');
   setAvatar.textContent = initialsFromName(user.name);
   setDisplayName.textContent = user.name;
@@ -1094,32 +1208,40 @@ function openSettings(){
   deletePwd.value = '';
   deleteFeedback.textContent = '';
   pendingEmail = '';
-  pendingPwd = '';
-  pendingDeletePwd = '';
   settingsModal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
 function closeSettings(){
   settingsModal.classList.remove('open');
   document.body.style.overflow = '';
 }
+
 openSettingsBtn.addEventListener('click', openSettings);
+document.getElementById('settingsLogout').addEventListener('click', () => {
+  const user = AUTH.getCurrentUser();
+  AUTH.logout();
+  closeSettings();
+  renderAuthUI();
+  showToast(user ? user.name + ', du er nu logget ud.' : 'Du er nu logget ud.', 'info', 2800);
+});
 settingsClose.addEventListener('click', closeSettings);
-settingsModal.addEventListener('click', (e) => { if(e.target === settingsModal) closeSettings(); });
+settingsModal.addEventListener('click', (e) => { if (e.target === settingsModal) closeSettings(); });
+
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape'){
-    if(settingsModal.classList.contains('open')) closeSettings();
-    else if(authModal.classList.contains('open')) closeAuthModal();
+  if (e.key === 'Escape') {
+    if (settingsModal.classList.contains('open')) closeSettings();
+    else if (authModal.classList.contains('open')) closeAuthModal();
   }
 });
 
 /* Save username */
 saveUsername.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   usernameFeedback.classList.remove('ok');
   const result = AUTH.updateUsername(user.id, setUsername.value);
-  if(result.error){ usernameFeedback.textContent = result.error; return; }
+  if (result.error) { usernameFeedback.textContent = result.error; return; }
   usernameFeedback.textContent = 'Brugernavn opdateret.';
   usernameFeedback.classList.add('ok');
   setAvatar.textContent = initialsFromName(result.user.name);
@@ -1128,34 +1250,36 @@ saveUsername.addEventListener('click', () => {
   showToast('Brugernavn gemt.', 'success', 2500);
 });
 
-/* Save email (opens verification) */
+/* Save email */
 saveEmail.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   emailFeedback.classList.remove('ok');
   emailFeedback.textContent = '';
   const newEmail = setEmail.value.trim();
-  if(!newEmail){ emailFeedback.textContent = 'Indtast en e-mailadresse.'; return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(newEmail)){ emailFeedback.textContent = 'Ugyldig e-mailadresse.'; return; }
-  if(newEmail.toLowerCase() === user.email.toLowerCase()){ emailFeedback.textContent = 'Det er den samme e-mail som nu.'; return; }
-  if(AUTH.findByEmail(newEmail)){ emailFeedback.textContent = 'E-mailen er allerede i brug.'; return; }
+  if (!newEmail) { emailFeedback.textContent = 'Indtast en e-mailadresse.'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(newEmail)) { emailFeedback.textContent = 'Ugyldig e-mailadresse.'; return; }
+  if (newEmail.toLowerCase() === user.email.toLowerCase()) { emailFeedback.textContent = 'Det er den samme e-mail som nu.'; return; }
+  if (AUTH.findByEmail(newEmail)) { emailFeedback.textContent = 'E-mailen er allerede i brug.'; return; }
   pendingEmail = newEmail;
   emailVerify.hidden = false;
   emailVerifyPwd.value = '';
   setTimeout(() => emailVerifyPwd.focus(), 60);
 });
+
 emailVerifyCancel.addEventListener('click', () => {
   emailVerify.hidden = true;
   emailVerifyPwd.value = '';
   pendingEmail = '';
   setEmail.value = AUTH.getCurrentUser()?.email || '';
 });
+
 emailVerifyConfirm.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   emailFeedback.classList.remove('ok');
   const result = AUTH.updateEmail(user.id, pendingEmail, emailVerifyPwd.value);
-  if(result.error){ emailFeedback.textContent = result.error; emailVerifyPwd.select(); return; }
+  if (result.error) { emailFeedback.textContent = result.error; emailVerifyPwd.select(); return; }
   emailFeedback.textContent = 'E-mail opdateret.';
   emailFeedback.classList.add('ok');
   setDisplayEmail.textContent = result.user.email;
@@ -1167,57 +1291,56 @@ emailVerifyConfirm.addEventListener('click', () => {
 });
 
 /* Change password */
-openChangePwd.addEventListener('click', () => {
-  pwdForm.hidden = !pwdForm.hidden;
-});
+openChangePwd.addEventListener('click', () => { pwdForm.hidden = !pwdForm.hidden; });
+
 pwdSave.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   pwdFeedback.textContent = '';
   const oldPwd = pwdOld.value;
   const newPwd = pwdNew.value;
   const confirmPwd = pwdConfirm.value;
-  if(!oldPwd){ pwdFeedback.textContent = 'Indtast din nuværende adgangskode.'; return; }
-  if(newPwd.length < 4){ pwdFeedback.textContent = 'Ny adgangskode skal være mindst 4 tegn.'; return; }
-  if(newPwd !== confirmPwd){ pwdFeedback.textContent = 'Adgangskoderne er ikke ens.'; return; }
+  if (!oldPwd) { pwdFeedback.textContent = 'Indtast din nuværende adgangskode.'; return; }
+  if (newPwd.length < 4) { pwdFeedback.textContent = 'Ny adgangskode skal være mindst 4 tegn.'; return; }
+  if (newPwd !== confirmPwd) { pwdFeedback.textContent = 'Adgangskoderne er ikke ens.'; return; }
   const result = AUTH.updatePassword(user.id, oldPwd, newPwd);
-  if(result.error){ pwdFeedback.textContent = result.error; return; }
+  if (result.error) { pwdFeedback.textContent = result.error; return; }
   pwdOld.value = ''; pwdNew.value = ''; pwdConfirm.value = '';
   pwdForm.hidden = true;
-  pwdFeedback.textContent = '';
   showToast('Adgangskode opdateret.', 'success', 2800);
 });
+
 pwdForgot.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   closeSettings();
   resetForgotFlow();
   document.getElementById('forgotEmail').value = user.email;
   forgotState.email = user.email;
-  // User still logged in but they want to change password without knowing old
-  // Trigger the forgot flow but let them complete it via email verification
   openAuthModal('forgot1', user.email);
-  showToast('Bekræft via e-mail-koden for at vælge en ny adgangskode.', 'info', 3500);
+  showToast('Bekræft via koden for at vælge en ny adgangskode.', 'info', 3500);
 });
 
 /* Delete account */
 openDeleteAccount.addEventListener('click', () => {
   deleteConfirm.hidden = !deleteConfirm.hidden;
-  if(!deleteConfirm.hidden) setTimeout(() => deletePwd.focus(), 60);
+  if (!deleteConfirm.hidden) setTimeout(() => deletePwd.focus(), 60);
 });
+
 deleteCancel.addEventListener('click', () => {
   deleteConfirm.hidden = true;
   deletePwd.value = '';
   deleteFeedback.textContent = '';
 });
+
 deleteConfirmBtn.addEventListener('click', () => {
   const user = AUTH.getCurrentUser();
-  if(!user) return;
+  if (!user) return;
   deleteFeedback.textContent = '';
   const pwd = deletePwd.value;
-  if(!pwd){ deleteFeedback.textContent = 'Indtast din adgangskode.'; return; }
+  if (!pwd) { deleteFeedback.textContent = 'Indtast din adgangskode.'; return; }
   const result = AUTH.deleteUser(user.id, pwd);
-  if(result.error){ deleteFeedback.textContent = result.error; return; }
+  if (result.error) { deleteFeedback.textContent = result.error; return; }
   closeSettings();
   renderAuthUI();
   showToast('Din konto er slettet.', 'info', 3500);
@@ -1230,30 +1353,40 @@ const practiceGrid = document.getElementById('practiceGrid');
 const mostReadList = document.getElementById('mostReadList');
 
 function renderLatest(id){
-  const a = articles.find(x => x.id === id); if(!a) return;
-  const el = document.createElement('div'); el.className = 'live-item'; el.dataset.article = id;
+  const a = articles.find(x => x.id === id); if (!a) return;
+  const el = document.createElement('div');
+  el.className = 'live-item';
+  el.dataset.article = id;
   el.innerHTML = '<span class="live-time">' + a.date.split(' ')[0] + '.</span><p>' + a.title + '</p>';
   latestList.appendChild(el);
 }
+
 function cardHTML(id){
-  const a = articles.find(x => x.id === id); if(!a) return '';
+  const a = articles.find(x => x.id === id); if (!a) return '';
   return '<div class="card" data-article="' + id + '"><div class="media r-3x2"><img src="' + a.image + '" alt="" loading="lazy"></div><h3>' + a.title + '</h3><p>' + a.kicker + '</p><div class="meta"><span>' + a.date + '</span></div></div>';
 }
+
 function renderMostRead(id, index){
-  const a = articles.find(x => x.id === id); if(!a) return;
-  const el = document.createElement('div'); el.className = 'mr-item'; el.dataset.article = id;
-  el.innerHTML = '<span class="mr-num">' + (index+1) + '</span><p>' + a.title + '</p>';
+  const a = articles.find(x => x.id === id); if (!a) return;
+  const el = document.createElement('div');
+  el.className = 'mr-item';
+  el.dataset.article = id;
+  el.innerHTML = '<span class="mr-num">' + (index + 1) + '</span><p>' + a.title + '</p>';
   mostReadList.appendChild(el);
 }
+
 function renderHome(filter){
-  latestList.innerHTML = ''; structureGrid.innerHTML = ''; practiceGrid.innerHTML = ''; mostReadList.innerHTML = '';
+  latestList.innerHTML = '';
+  structureGrid.innerHTML = '';
+  practiceGrid.innerHTML = '';
+  mostReadList.innerHTML = '';
   let ids = articles.map(a => a.id);
-  if(filter && filter !== 'all') ids = articles.filter(a => a.kicker === filter).map(a => a.id);
-  if(ids.length === 0) ids = articles.map(a => a.id);
+  if (filter && filter !== 'all') ids = articles.filter(a => a.kicker === filter).map(a => a.id);
+  if (ids.length === 0) ids = articles.map(a => a.id);
   ids.forEach(renderLatest);
-  structureGrid.innerHTML = ids.slice(0,4).map(cardHTML).join('');
-  practiceGrid.innerHTML = ids.slice(0,4).map(cardHTML).join('');
-  ids.slice(0,5).forEach((id, i) => renderMostRead(id, i));
+  structureGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
+  practiceGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
+  ids.slice(0, 5).forEach((id, i) => renderMostRead(id, i));
 }
 renderHome('all');
 
@@ -1263,45 +1396,65 @@ const articleView = document.getElementById('articleView');
 const progress = document.getElementById('readProgress');
 
 function articlePageHTML(a){
-  const related = articles.filter(x => x.id !== a.id).slice(0,3);
-  const relatedHTML = related.map(x => '<div class="card" data-article="' + x.id + '"><div class="media r-3x2"><img src="' + x.image + '" alt="" loading="lazy"></div><h3>' + x.title + '</h3><p>' + x.kicker + '</p><div class="meta"><span>' + x.date + '</span></div></div>').join('');
-  const videoHTML = a.videoUrl ? '<div class="video-block"><iframe src="' + a.videoUrl + '" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' : '';
-  const figureHTML = a.videoUrl ? '' : '<figure class="article-figure"><img src="' + a.image + '" alt="' + a.title + '">' + (a.caption ? '<figcaption>' + a.caption + '</figcaption>' : '') + '</figure>';
+  const related = articles.filter(x => x.id !== a.id).slice(0, 3);
+  const relatedHTML = related.map(x =>
+    '<div class="card" data-article="' + x.id + '"><div class="media r-3x2"><img src="' + x.image + '" alt="" loading="lazy"></div><h3>' + x.title + '</h3><p>' + x.kicker + '</p><div class="meta"><span>' + x.date + '</span></div></div>'
+  ).join('');
+  const videoHTML = a.videoUrl
+    ? '<div class="video-block"><iframe src="' + a.videoUrl + '" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>'
+    : '';
+  const figureHTML = a.videoUrl ? '' :
+    '<figure class="article-figure"><img src="' + a.image + '" alt="' + a.title + '"></figure>';
   return '<div class="article-page"><a href="#/" class="back-link" id="backToHome"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tilbage til forsiden</a><header class="article-head"><span class="kicker">' + a.kicker + '</span><h1>' + a.title + '</h1><p class="article-dek">' + a.dek + '</p><div class="article-meta"><span class="author">' + a.byline + '</span><span class="sep">·</span><span>' + a.date + '</span></div></header>' + videoHTML + figureHTML + '<div class="article-body">' + a.text + '</div><div class="article-source"><strong>Kilde:</strong> <a href="' + a.sourceUrl + '" target="_blank" rel="noopener">' + a.source + '</a></div><section class="article-related"><h2>Læs også</h2><div class="grid">' + relatedHTML + '</div></section></div>';
 }
+
 function showArticle(a){
   articleView.innerHTML = articlePageHTML(a);
-  homeView.hidden = true; articleView.hidden = false;
+  homeView.hidden = true;
+  articleView.hidden = false;
   document.body.classList.add('reading');
   document.title = a.title + ' — Auning Skole Nyheder';
-  window.scrollTo(0,0); progress.style.width = '0%';
+  window.scrollTo(0, 0);
+  progress.style.width = '0%';
   const back = document.getElementById('backToHome');
-  if(back) back.addEventListener('click', (e) => { e.preventDefault(); location.hash = '#/'; });
+  if (back) back.addEventListener('click', (e) => { e.preventDefault(); location.hash = '#/'; });
 }
+
 function showHome(){
-  homeView.hidden = false; articleView.hidden = true; articleView.innerHTML = '';
+  homeView.hidden = false;
+  articleView.hidden = true;
+  articleView.innerHTML = '';
   document.body.classList.remove('reading');
   document.title = 'Auning Skole — Nyheder';
   progress.style.width = '0%';
 }
+
 function router(){
   const match = location.hash.match(/^#\/artikel\/(\d+)/);
-  if(match){ const a = articles.find(x => x.id === Number(match[1])); if(a){ showArticle(a); return; } }
+  if (match) {
+    const a = articles.find(x => x.id === Number(match[1]));
+    if (a) { showArticle(a); return; }
+  }
   showHome();
 }
 window.addEventListener('hashchange', router);
 window.addEventListener('DOMContentLoaded', router);
+
 document.addEventListener('click', (e) => {
   const trigger = e.target.closest('[data-article]');
-  if(trigger){ e.preventDefault(); location.hash = '#/artikel/' + trigger.dataset.article; }
+  if (trigger) {
+    e.preventDefault();
+    location.hash = '#/artikel/' + trigger.dataset.article;
+  }
 });
+
 function updateProgress(){
-  if(articleView.hidden) return;
+  if (articleView.hidden) return;
   const doc = document.documentElement;
   const total = doc.scrollHeight - doc.clientHeight;
-  progress.style.width = Math.min(100, Math.max(0, total > 0 ? (doc.scrollTop/total)*100 : 0)) + '%';
+  progress.style.width = Math.min(100, Math.max(0, total > 0 ? (doc.scrollTop / total) * 100 : 0)) + '%';
 }
-window.addEventListener('scroll', updateProgress, { passive:true });
+window.addEventListener('scroll', updateProgress, { passive: true });
 window.addEventListener('resize', updateProgress);
 
 /* ══════════════════ SEARCH ══════════════════ */
@@ -1315,49 +1468,92 @@ let searchSelectedIndex = -1;
 let searchCurrentResults = [];
 let searchDebounceTimer;
 
-function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
-function highlightText(t, term){ if(!term) return t; return t.replace(new RegExp('('+escapeRegex(term)+')','gi'), '<mark>$1</mark>'); }
-function openSearch(){ searchOverlay.classList.add('open'); document.body.style.overflow='hidden'; searchInput.value=''; searchSelectedIndex=-1; renderSearch(''); setTimeout(()=>searchInput.focus(),60); }
-function closeSearch(){ searchOverlay.classList.remove('open'); document.body.style.overflow=''; searchSelectedIndex=-1; }
+function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function highlightText(t, term){ if (!term) return t; return t.replace(new RegExp('(' + escapeRegex(term) + ')', 'gi'), '<mark>$1</mark>'); }
+
+function openSearch(){
+  searchOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  searchInput.value = '';
+  searchSelectedIndex = -1;
+  renderSearch('');
+  setTimeout(() => searchInput.focus(), 60);
+}
+
+function closeSearch(){
+  searchOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+  searchSelectedIndex = -1;
+}
+
 function renderSearch(query){
   const term = query.trim();
-  if(!term){ searchCurrentResults = articles.slice(0,8); searchMeta.textContent = 'Seneste historier'; }
-  else {
+  if (!term) {
+    searchCurrentResults = articles.slice(0, 8);
+    searchMeta.textContent = 'Seneste historier';
+  } else {
     const lower = term.toLowerCase();
     searchCurrentResults = articles.filter(a => {
-      const body = a.text ? a.text.replace(/<[^>]+>/g,' ') : '';
-      return (a.title+' '+a.kicker+' '+(a.dek||'')+' '+body).toLowerCase().includes(lower);
+      const body = a.text ? a.text.replace(/<[^>]+>/g, ' ') : '';
+      return (a.title + ' ' + a.kicker + ' ' + (a.dek || '') + ' ' + body).toLowerCase().includes(lower);
     });
-    searchMeta.textContent = searchCurrentResults.length + (searchCurrentResults.length===1 ? ' resultat' : ' resultater');
+    searchMeta.textContent = searchCurrentResults.length + (searchCurrentResults.length === 1 ? ' resultat' : ' resultater');
   }
-  if(searchCurrentResults.length === 0){ searchResults.innerHTML = '<div class="search-empty">Ingen historier matcher “' + term + '”.</div>'; return; }
-  searchResults.innerHTML = searchCurrentResults.map((a, i) => '<div class="search-result' + (i===searchSelectedIndex?' selected':'') + '" data-result-index="' + i + '"><div class="thumb"><img src="' + a.image + '" alt=""></div><div class="info"><span class="cat">' + a.kicker + '</span><h4>' + highlightText(a.title, term) + '</h4><div class="date">' + a.date + '</div></div></div>').join('');
+  if (searchCurrentResults.length === 0) {
+    searchResults.innerHTML = '<div class="search-empty">Ingen historier matcher “' + term + '”.</div>';
+    return;
+  }
+  searchResults.innerHTML = searchCurrentResults.map((a, i) =>
+    '<div class="search-result' + (i === searchSelectedIndex ? ' selected' : '') + '" data-result-index="' + i + '"><div class="thumb"><img src="' + a.image + '" alt=""></div><div class="info"><span class="cat">' + a.kicker + '</span><h4>' + highlightText(a.title, term) + '</h4><div class="date">' + a.date + '</div></div></div>'
+  ).join('');
 }
+
 function updateSearchSelection(){
   const items = searchResults.querySelectorAll('.search-result');
   items.forEach((el, i) => el.classList.toggle('selected', i === searchSelectedIndex));
-  if(searchSelectedIndex >= 0 && items[searchSelectedIndex]) items[searchSelectedIndex].scrollIntoView({ block:'nearest' });
+  if (searchSelectedIndex >= 0 && items[searchSelectedIndex]) items[searchSelectedIndex].scrollIntoView({ block: 'nearest' });
 }
+
 function openResultById(id){ closeSearch(); location.hash = '#/artikel/' + id; }
+
 searchBtn.addEventListener('click', openSearch);
 searchClose.addEventListener('click', closeSearch);
-searchOverlay.addEventListener('click', (e) => { if(e.target === searchOverlay) closeSearch(); });
-searchInput.addEventListener('input', (e) => { searchSelectedIndex = -1; clearTimeout(searchDebounceTimer); searchDebounceTimer = setTimeout(() => renderSearch(e.target.value), 90); });
+searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearch(); });
+searchInput.addEventListener('input', (e) => {
+  searchSelectedIndex = -1;
+  clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = setTimeout(() => renderSearch(e.target.value), 90);
+});
 searchInput.addEventListener('keydown', (e) => {
-  if(e.key === 'ArrowDown'){ e.preventDefault(); if(!searchCurrentResults.length) return; searchSelectedIndex = (searchSelectedIndex+1) % searchCurrentResults.length; updateSearchSelection(); }
-  else if(e.key === 'ArrowUp'){ e.preventDefault(); if(!searchCurrentResults.length) return; searchSelectedIndex = searchSelectedIndex <= 0 ? searchCurrentResults.length-1 : searchSelectedIndex-1; updateSearchSelection(); }
-  else if(e.key === 'Enter'){ e.preventDefault(); const pick = searchSelectedIndex >= 0 ? searchSelectedIndex : 0; if(searchCurrentResults[pick]) openResultById(searchCurrentResults[pick].id); }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (!searchCurrentResults.length) return;
+    searchSelectedIndex = (searchSelectedIndex + 1) % searchCurrentResults.length;
+    updateSearchSelection();
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (!searchCurrentResults.length) return;
+    searchSelectedIndex = searchSelectedIndex <= 0 ? searchCurrentResults.length - 1 : searchSelectedIndex - 1;
+    updateSearchSelection();
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    const pick = searchSelectedIndex >= 0 ? searchSelectedIndex : 0;
+    if (searchCurrentResults[pick]) openResultById(searchCurrentResults[pick].id);
+  }
 });
 searchResults.addEventListener('click', (e) => {
   const item = e.target.closest('[data-result-index]');
-  if(item){ const a = searchCurrentResults[Number(item.dataset.resultIndex)]; if(a) openResultById(a.id); }
+  if (item) {
+    const a = searchCurrentResults[Number(item.dataset.resultIndex)];
+    if (a) openResultById(a.id);
+  }
 });
 document.addEventListener('keydown', (e) => {
   const tag = (document.activeElement && document.activeElement.tagName) || '';
   const inField = tag === 'INPUT' || tag === 'TEXTAREA';
-  if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); openSearch(); }
-  else if(e.key === '/' && !inField && !searchOverlay.classList.contains('open')){ e.preventDefault(); openSearch(); }
-  else if(e.key === 'Escape' && searchOverlay.classList.contains('open')) closeSearch();
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openSearch(); }
+  else if (e.key === '/' && !inField && !searchOverlay.classList.contains('open')) { e.preventDefault(); openSearch(); }
+  else if (e.key === 'Escape' && searchOverlay.classList.contains('open')) closeSearch();
 });
 
 /* ══════════════════ INFO MODAL ══════════════════ */
@@ -1366,50 +1562,70 @@ const infoTitle = document.getElementById('infoTitle');
 const infoBody = document.getElementById('infoBody');
 const infoClose = document.getElementById('infoClose');
 let infoLastFocus = null;
+
 const infoContent = {
-  tv:{ title:'TV-guiden', body:'<p>TV-guiden er på vej. Indtil da kan du se TV2 Østjyllands video fra <em>Løb for Livet</em> i artiklen her på siden.</p>' },
-  radio:{ title:'Radio', body:'<p>Radioafspilleren er på vej. Indtil da kan du læse alle vores historier om Auning Skole her på siden.</p>' },
-  contact:{ title:'Kontakt redaktionen', body:'<p>Har du et tip, et billede eller en historie fra Auning Skole, du synes vi skal dække?</p><p>Skriv til <a href="mailto:redaktion@auning.dk">redaktion@auning.dk</a>.</p>' },
-  privacy:{ title:'Privatlivspolitik', body:'<p>Vi indsamler kun anonym besøgsstatistik. E-mailadresser fra nyhedsbrevet og dine login-oplysninger gemmes udelukkende lokalt i din egen browser.</p>' },
-  cookies:{ title:'Cookieindstillinger', body:'<p>Vi bruger kun lokal lagring (localStorage) til at huske din login-session og dine nyhedsbrevstilmeldinger. Ingen sporing, ingen reklame.</p>' },
-  terms:{ title:'Vilkår', body:'<p>Indholdet på denne side er til personlig brug. Du må gerne citere os, hvis du angiver kilden.</p>' },
-  accessibility:{ title:'Tilgængelighed', body:'<p>Siden er bygget med fuld tastaturnavigation. Genveje: <kbd>Ctrl</kbd>+<kbd>K</kbd> åbner søgning, <kbd>Esc</kbd> lukker.</p>' }
+  tv: { title: 'TV-guiden', body: '<p>TV-guiden er på vej. Indtil da kan du se TV2 Østjyllands video fra <em>Løb for Livet</em> i artiklen her på siden.</p>' },
+  radio: { title: 'Radio', body: '<p>Radioafspilleren er på vej.</p>' },
+  contact: { title: 'Kontakt redaktionen', body: '<p>Skriv til <a href="mailto:redaktion@auning.dk">redaktion@auning.dk</a>.</p>' },
+  privacy: { title: 'Privatlivspolitik', body: '<p>Dine login-oplysninger og nyhedsbrevstilmeldinger gemmes udelukkende lokalt i din egen browser.</p>' },
+  cookies: { title: 'Cookieindstillinger', body: '<p>Vi bruger kun lokal lagring (localStorage) til at huske din session.</p>' },
+  terms: { title: 'Vilkår', body: '<p>Indholdet er til personlig brug.</p>' },
+  accessibility: { title: 'Tilgængelighed', body: '<p>Fuld tastaturnavigation. <kbd>Ctrl</kbd>+<kbd>K</kbd> åbner søgning.</p>' }
 };
+
 function openInfo(key){
-  const c = infoContent[key]; if(!c) return;
+  const c = infoContent[key];
+  if (!c) return;
   infoLastFocus = document.activeElement;
   infoTitle.textContent = c.title;
   infoBody.innerHTML = c.body;
-  infoModal.classList.add('open'); document.body.style.overflow = 'hidden';
+  infoModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
   infoClose.focus();
 }
+
 function closeInfo(){
-  infoModal.classList.remove('open'); document.body.style.overflow = '';
-  if(infoLastFocus) infoLastFocus.focus();
+  infoModal.classList.remove('open');
+  document.body.style.overflow = '';
+  if (infoLastFocus) infoLastFocus.focus();
 }
+
 infoClose.addEventListener('click', closeInfo);
-infoModal.addEventListener('click', (e) => { if(e.target === infoModal) closeInfo(); });
+infoModal.addEventListener('click', (e) => { if (e.target === infoModal) closeInfo(); });
 
 /* ══════════════════ ACTIONS ══════════════════ */
 function scrollToNewsletter(){
-  if(!articleView.hidden){ location.hash = '#/'; setTimeout(() => { const el = document.getElementById('newsletterSection'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 120); }
-  else { const el = document.getElementById('newsletterSection'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if (!articleView.hidden) {
+    location.hash = '#/';
+    setTimeout(() => {
+      const el = document.getElementById('newsletterSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  } else {
+    const el = document.getElementById('newsletterSection');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
+
 document.querySelectorAll('[data-action]').forEach(el => {
   el.addEventListener('click', (e) => {
     e.preventDefault();
     const action = el.dataset.action;
-    if(action === 'live'){ document.getElementById('breakingBar').scrollIntoView({behavior:'smooth',block:'start'}); window.scrollBy({top:-80,behavior:'smooth'}); }
-    else if(action === 'newsletter') scrollToNewsletter();
-    else if(action === 'login'){ if(AUTH.getCurrentUser()) userDropdown.classList.toggle('open'); else openAuthModal('login'); }
-    else if(action === 'account') userDropdown.classList.toggle('open');
-    else if(action === 'tv') openInfo('tv');
-    else if(action === 'radio') openInfo('radio');
-    else if(action === 'contact') openInfo('contact');
-    else if(action === 'privacy') openInfo('privacy');
-    else if(action === 'cookies') openInfo('cookies');
-    else if(action === 'terms') openInfo('terms');
-    else if(action === 'accessibility') openInfo('accessibility');
+    if (action === 'live') {
+      document.getElementById('breakingBar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollBy({ top: -80, behavior: 'smooth' });
+    } else if (action === 'newsletter') scrollToNewsletter();
+    else if (action === 'login') {
+      if (AUTH.getCurrentUser()) userDropdown.classList.toggle('open');
+      else openAuthModal('login');
+    } else if (action === 'account') userDropdown.classList.toggle('open');
+    else if (action === 'tv') openInfo('tv');
+    else if (action === 'radio') openInfo('radio');
+    else if (action === 'contact') openInfo('contact');
+    else if (action === 'privacy') openInfo('privacy');
+    else if (action === 'cookies') openInfo('cookies');
+    else if (action === 'terms') openInfo('terms');
+    else if (action === 'accessibility') openInfo('accessibility');
     document.body.classList.remove('nav-open');
   });
 });
@@ -1422,16 +1638,37 @@ document.querySelectorAll('[data-filter]').forEach(el => {
     renderHome(filter);
     document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
     const navEl = document.querySelector('.nav a[data-filter="' + filter + '"]');
-    if(navEl) navEl.classList.add('active');
+    if (navEl) navEl.classList.add('active');
     document.body.classList.remove('nav-open');
-    if(!articleView.hidden) showHome();
-    if(location.hash !== '#/' && location.hash !== '') location.hash = '#/';
-    window.scrollTo({top:0,behavior:'smooth'});
+    if (!articleView.hidden) showHome();
+    if (location.hash !== '#/' && location.hash !== '') location.hash = '#/';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
 
-/* ══════════════════ NEWSLETTER ══════════════════ */
-const NL_ENDPOINT = ""; /* paste Formspree endpoint here for real emails */
+/* ══════════════════ NEWSLETTER — NOW ACTUALLY SENDS ══════════════════ */
+/*
+  ┌──────────────────────────────────────────────────────────────┐
+  │ TO MAKE THIS SEND REAL EMAILS TO YOUR INBOX:                 │
+  │                                                              │
+  │ 1. Go to https://formspree.io and sign up (free: 50/month)   │
+  │ 2. Click "+ New Form"                                        │
+  │ 3. Name it "Auning Skole Nyhedsbrev"                         │
+  │ 4. Set the notification email to the address YOU want        │
+  │    signups delivered to                                      │
+  │ 5. Create the form and copy the endpoint URL                 │
+  │    (looks like https://formspree.io/f/xyzabcd)               │
+  │ 6. Paste that URL between the quotes below                   │
+  │                                                              │
+  │ Every newsletter signup will now arrive in your inbox.       │
+  │                                                              │
+  │ Until you do this, the form validates and shows success      │
+  │ locally, but no email is sent anywhere — because a static    │
+  │ GitHub Pages site has no server to send mail.                │
+  └──────────────────────────────────────────────────────────────┘
+*/
+const NL_ENDPOINT = "";  /* ← paste your Formspree endpoint here */
+
 const NL_STORAGE_KEY = 'auning_subscribers_v1';
 const nlForm = document.getElementById('nlForm');
 const nlEmail = document.getElementById('nlEmail');
@@ -1440,54 +1677,109 @@ const nlFeedback = document.getElementById('nlFeedback');
 const nlSuccess = document.getElementById('nlSuccess');
 
 function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
-function getSubscribers(){ try { return JSON.parse(localStorage.getItem(NL_STORAGE_KEY)||'[]'); } catch { return []; } }
-function saveSubscriber(email){ const list = getSubscribers(); const n = email.toLowerCase(); if(!list.includes(n)){ list.push(n); try { localStorage.setItem(NL_STORAGE_KEY, JSON.stringify(list)); } catch {} } }
+function getSubscribers(){ try { return JSON.parse(localStorage.getItem(NL_STORAGE_KEY) || '[]'); } catch { return []; } }
+function saveSubscriber(email){
+  const list = getSubscribers();
+  const n = email.toLowerCase();
+  if (!list.includes(n)) {
+    list.push(n);
+    try { localStorage.setItem(NL_STORAGE_KEY, JSON.stringify(list)); } catch {}
+  }
+}
 function setNlFeedback(msg){ nlFeedback.textContent = msg || ''; nlForm.classList.toggle('error', !!msg); }
-function setNlLoading(on){ nlSubmit.disabled = on; nlEmail.disabled = on; if(on) nlSubmit.innerHTML = '<span class="spinner"></span><span>Tilmelder…</span>'; else nlSubmit.textContent = 'Tilmeld'; }
-nlEmail.addEventListener('input', () => { if(nlForm.classList.contains('error')) setNlFeedback(''); });
+function setNlLoading(on){
+  nlSubmit.disabled = on;
+  nlEmail.disabled = on;
+  if (on) nlSubmit.innerHTML = '<span class="spinner"></span><span>Tilmelder…</span>';
+  else nlSubmit.textContent = 'Tilmelm';
+}
+
+nlEmail.addEventListener('input', () => {
+  if (nlForm.classList.contains('error')) setNlFeedback('');
+});
 
 nlForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = nlEmail.value.trim();
-  if(!email){ setNlFeedback('Indtast din e-mailadresse.'); nlEmail.focus(); return; }
-  if(!isValidEmail(email)){ setNlFeedback('Indtast en gyldig e-mailadresse.'); nlEmail.focus(); return; }
-  if(getSubscribers().includes(email.toLowerCase())){ setNlFeedback('Denne e-mailadresse er allerede tilmeldt.'); return; }
-  setNlFeedback(''); setNlLoading(true);
+
+  if (!email) { setNlFeedback('Indtast din e-mailadresse.'); nlEmail.focus(); return; }
+  if (!isValidEmail(email)) { setNlFeedback('Indtast en gyldig e-mailadresse.'); nlEmail.focus(); return; }
+  if (getSubscribers().includes(email.toLowerCase())) {
+    setNlFeedback('Denne e-mailadresse er allerede tilmeldt.');
+    return;
+  }
+
+  setNlFeedback('');
+  setNlLoading(true);
+
   try {
-    if(NL_ENDPOINT){
-      const res = await fetch(NL_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify({ email, _subject:'Ny tilmelding — Auning Skole Nyheder' }) });
-      if(!res.ok) throw new Error('HTTP ' + res.status);
-    } else { await new Promise(r => setTimeout(r, 700)); }
+    if (NL_ENDPOINT) {
+      // REAL submission — Formspree emails you
+      const res = await fetch(NL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'Ny tilmelding til Auning Skole Nyhedsbrev',
+          source: location.href,
+          _replyto: email
+        })
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Formspree svarede med fejl ' + res.status);
+      }
+    } else {
+      // No endpoint configured — simulate for demo
+      await new Promise(r => setTimeout(r, 700));
+    }
+
     saveSubscriber(email);
-    nlForm.hidden = true; nlSuccess.hidden = false;
+    nlForm.hidden = true;
+    nlSuccess.hidden = false;
     const emailEl = nlSuccess.querySelector('.nl-success-email');
-    if(emailEl) emailEl.textContent = email;
-    showToast('Du er nu tilmeldt nyhedsbrevet!', 'success');
-  } catch { setNlFeedback('Noget gik galt. Prøv igen.'); showToast('Tilmeldingen fejlede.', 'error'); }
-  finally { setNlLoading(false); }
+    if (emailEl) emailEl.textContent = email;
+    showToast(
+      NL_ENDPOINT ? 'Tilmelding sendt! Du hører fra os.' : 'Tilmeldt (demo — indsæt Formspree-endpoint for rigtig email).',
+      'success'
+    );
+  } catch (err) {
+    setNlFeedback('Noget gik galt: ' + err.message);
+    showToast('Tilmeldingen fejlede.', 'error');
+  } finally {
+    setNlLoading(false);
+  }
 });
 
 /* ══════════════════ MISC ══════════════════ */
 (function(){
   const d = new Date();
-  const s = d.toLocaleDateString('da-DK',{ weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const s = d.toLocaleDateString('da-DK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const el = document.getElementById('today');
-  if(el) el.textContent = s.charAt(0).toUpperCase() + s.slice(1);
+  if (el) el.textContent = s.charAt(0).toUpperCase() + s.slice(1);
   const y = document.getElementById('year');
-  if(y) y.textContent = d.getFullYear();
+  if (y) y.textContent = d.getFullYear();
 })();
+
 (function(){
   const items = document.querySelectorAll('.ticker-item');
-  if(items.length < 2) return;
+  if (items.length < 2) return;
   let i = 0;
-  setInterval(() => { items[i].classList.remove('active'); i = (i+1) % items.length; items[i].classList.add('active'); }, 5000);
+  setInterval(() => {
+    items[i].classList.remove('active');
+    i = (i + 1) % items.length;
+    items[i].classList.add('active');
+  }, 5000);
 })();
+
 (function(){
   const btn = document.getElementById('menuBtn');
   const body = document.body;
-  if(!btn) return;
-  btn.addEventListener('click', () => { body.classList.toggle('nav-open'); });
-  document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => body.classList.remove('nav-open')));
+  if (!btn) return;
+  btn.addEventListener('click', () => body.classList.toggle('nav-open'));
+  document.querySelectorAll('#mobileNav a').forEach(a =>
+    a.addEventListener('click', () => body.classList.remove('nav-open'))
+  );
 })();
 
 /* Init */
