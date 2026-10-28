@@ -22,77 +22,89 @@ ul{list-style:none}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
 @media(max-width:600px){.wrap{padding:0 16px}}
 
-/* TOPBAR */
+/* ─── VIEW TRANSITIONS ─── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtFadeOut .28s cubic-bezier(.4,0,.6,1) both}
+::view-transition-new(root){animation:vtFadeIn .32s cubic-bezier(.2,.7,.3,1) both}
+@keyframes vtFadeOut{from{opacity:1}to{opacity:0;transform:scale(.98)}}
+@keyframes vtFadeIn{from{opacity:0;transform:scale(1.01)}to{opacity:1;transform:scale(1)}}
+.hero-img{view-transition-name:hero-img}
+.hero-headline{view-transition-name:hero-headline}
+
+/* ─── TOPBAR ─── */
 .topbar{background:#fff;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:34px}
 .topbar-date{font-weight:500}
 .topbar-links{display:flex;gap:22px;font-weight:600}
-.topbar-links a{cursor:pointer}
+.topbar-links a{cursor:pointer;transition:color .2s}
 .topbar-links a:hover{color:var(--red)}
 @media(max-width:760px){.topbar-links a:nth-child(-n+3){display:none}}
 
-/* HEADER */
+/* ─── HEADER ─── */
 .site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
 .header-inner{display:flex;align-items:center;gap:32px;height:74px}
-.logo{flex:none;color:var(--red);font-weight:900;font-size:34px;letter-spacing:-.06em;line-height:1}
-.logo:hover{opacity:.85}
+.logo{flex:none;color:var(--red);font-weight:900;font-size:34px;letter-spacing:-.06em;line-height:1;transition:opacity .2s}
+.logo:hover{opacity:.8}
 .nav{display:flex;flex:1;align-items:stretch;height:74px;overflow-x:auto;scrollbar-width:none;gap:4px}
 .nav::-webkit-scrollbar{display:none}
-.nav a{display:flex;align-items:center;padding:0 14px;font-size:15px;font-weight:600;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+.nav a{display:flex;align-items:center;padding:0 14px;font-size:15px;font-weight:600;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer;transition:color .2s,border-color .2s}
 .nav a:hover,.nav a.active{color:var(--red);border-bottom-color:var(--red)}
 .actions{display:flex;align-items:center;gap:6px;flex:none}
-.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;transition:background .15s}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
 .icon-btn:hover{background:var(--soft)}
 .menu-btn{display:none}
 .mobile-nav{display:none;border-top:1px solid var(--line);background:#fff}
 body.nav-open .mobile-nav{display:block}
-.mobile-nav a{display:block;padding:16px 24px;border-bottom:1px solid var(--line);font-weight:600;font-size:16px;cursor:pointer}
-.mobile-nav a:hover{color:var(--red)}
+.mobile-nav a{display:block;padding:16px 24px;border-bottom:1px solid var(--line);font-weight:600;font-size:16px;cursor:pointer;transition:background .15s}
+.mobile-nav a:hover{background:var(--soft)}
 @media(max-width:980px){.nav{display:none}.menu-btn{display:grid}.header-inner{gap:10px;height:62px}.site-header .logo{flex:1;font-size:28px}}
 @media(min-width:981px){.mobile-nav{display:none!important}}
 
-/* BREAKING */
+/* ─── BREAKING ─── */
 .breaking{background:var(--red);color:#fff}
 .breaking .wrap{display:flex;align-items:center;gap:18px;min-height:46px}
 .breaking-label{display:flex;align-items:center;gap:9px;font-weight:800;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;flex:none}
 .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.7)}}
 .ticker{position:relative;flex:1;min-width:0;height:46px;overflow:hidden}
-.ticker-item{position:absolute;inset:0;display:flex;align-items:center;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transform:translateY(10px);transition:all .45s ease}
+.ticker-item{position:absolute;inset:0;display:flex;align-items:center;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
 .ticker-item.active{opacity:1;transform:translateY(0)}
 @media(max-width:520px){.breaking-label span:last-child{display:none}.ticker-item{font-size:13px}}
 
-/* MEDIA */
+/* ─── MEDIA ─── */
 .media{position:relative;display:block;overflow:hidden;background:#e8e8e8}
-.media img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .4s}
+.media img.lazy{opacity:0}
+.media img.loaded{opacity:1}
 .media:hover img{transform:scale(1.05)}
 .r-16x9{aspect-ratio:16/9}.r-4x3{aspect-ratio:4/3}.r-3x2{aspect-ratio:3/2}
 
-/* HERO */
+/* ─── HERO ─── */
 .hero{display:grid;grid-template-columns:1.85fr 1fr;gap:0;padding:36px 0 8px}
 .hero-main{padding-right:44px;border-right:1px solid var(--line)}
 .hero-side{padding-left:44px;display:flex;flex-direction:column}
 .kicker{display:inline-block;color:var(--red);font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
 .hero-main .kicker{margin-top:22px}
 .hero-title{font-size:clamp(28px,3.3vw,46px);line-height:1.04;letter-spacing:-.032em;font-weight:800;margin-bottom:14px}
+.hero-title a{transition:color .2s}
 .hero-title a:hover{color:var(--red)}
 .hero-dek{font-size:clamp(15px,1.3vw,18px);color:#3a3a3a;max-width:64ch}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:16px}
 .meta .sep{opacity:.5}
-.side-item{display:grid;grid-template-columns:1fr 112px;gap:18px;align-items:start;padding:20px 0;border-bottom:1px solid var(--line);cursor:pointer}
-.side-item:first-child{padding-top:0}
-.side-item:last-child{border-bottom:0;padding-bottom:0}
-.side-item h3{font-size:16.5px;line-height:1.24;font-weight:700}
+.side-item{display:grid;grid-template-columns:1fr 112px;gap:18px;align-items:start;padding:20px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.side-item:hover{background:var(--soft)}
+.side-item:first-child{padding-top:0}.side-item:last-child{border-bottom:0;padding-bottom:0}
+.side-item h3{font-size:16.5px;line-height:1.24;font-weight:700;transition:color .2s}
 .side-item:hover h3{color:var(--red)}
 .side-item .meta{margin-top:9px;font-size:12.5px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:24px}.hero-main{padding-right:0;border-right:0;padding-bottom:28px;border-bottom:1px solid var(--line)}.hero-side{padding-left:0;padding-top:12px}}
 
-/* SECTIONS */
+/* ─── SECTIONS ─── */
 .section{margin-top:56px}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-top:3px solid var(--ink);padding-top:14px;margin-bottom:26px}
 .section-head h2{font-size:clamp(21px,2.1vw,27px);font-weight:800;letter-spacing:-.028em}
-.section-head .more{font-size:13.5px;font-weight:700;color:var(--red);white-space:nowrap;cursor:pointer}
-.section-head .more:hover{text-decoration:underline}
+.section-head .more{font-size:13.5px;font-weight:700;color:var(--red);white-space:nowrap;cursor:pointer;transition:opacity .2s}
+.section-head .more:hover{opacity:.7}
 .grid{display:grid;gap:32px 28px}
 .grid-4{grid-template-columns:repeat(4,1fr)}
 .grid-3{grid-template-columns:repeat(3,1fr)}
@@ -100,62 +112,65 @@ body.nav-open .mobile-nav{display:block}
 @media(max-width:1000px){.grid-4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
-.card{cursor:pointer}
-.card h3{font-size:17.5px;line-height:1.24;font-weight:700;margin-top:14px}
+.card{cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.3,1)}
+.card:hover{transform:translateY(-2px)}
+.card h3{font-size:17.5px;line-height:1.24;font-weight:700;margin-top:14px;transition:color .2s}
 .card:hover h3{color:var(--red)}
 .card p{font-size:14px;color:var(--muted);margin-top:8px}
 
-/* LIVE LIST */
+/* ─── LIVE LIST ─── */
 .live-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px}
-.live-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;cursor:pointer}
+.live-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;cursor:pointer;transition:background .15s}
+.live-item:hover{background:var(--soft)}
 .live-time{font-size:13px;font-weight:800;color:var(--red);flex:none;width:48px;font-variant-numeric:tabular-nums}
-.live-item p{font-size:15px;font-weight:600;line-height:1.3}
+.live-item p{font-size:15px;font-weight:600;line-height:1.3;transition:color .2s}
 .live-item:hover p{color:var(--red)}
 @media(max-width:900px){.live-list{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.live-list{grid-template-columns:1fr}}
 
-/* SPLIT */
+/* ─── SPLIT ─── */
 .split{display:grid;grid-template-columns:2fr 1fr;gap:56px;align-items:start}
 @media(max-width:920px){.split{grid-template-columns:1fr;gap:40px}}
 .most-read{background:var(--soft);border-top:3px solid var(--ink);padding:22px}
 .most-read h2{font-size:16px;font-weight:800;margin-bottom:8px}
-.mr-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #e2e2e2;align-items:flex-start;cursor:pointer}
+.mr-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #e2e2e2;align-items:flex-start;cursor:pointer;transition:background .15s}
+.mr-item:hover{background:#efefef}
 .mr-item:last-child{border-bottom:0;padding-bottom:0}
 .mr-num{font-size:22px;font-weight:900;color:var(--red);line-height:1;flex:none;width:28px}
-.mr-item p{font-size:14.5px;font-weight:600;line-height:1.28}
+.mr-item p{font-size:14.5px;font-weight:600;line-height:1.28;transition:color .2s}
 .mr-item:hover p{color:var(--red)}
 
-/* FOLLOW SECTION */
+/* ─── FOLLOW SECTION ─── */
 .follow-section{background:#0a0a0a;color:#fff;margin:64px 0 10px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
 .follow-section h2{font-size:clamp(22px,2.2vw,30px);font-weight:800;margin-bottom:10px}
 .follow-section p{color:#b4b4b4;font-size:15px;max-width:56ch;line-height:1.55}
 .follow-links{display:flex;gap:12px;flex-wrap:wrap}
-.follow-link{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:2px;color:#fff;font-size:15px;font-weight:700;transition:all .15s}
+.follow-link{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:2px;color:#fff;font-size:15px;font-weight:700;transition:background .2s,transform .2s,border-color .2s}
 .follow-link:hover{background:var(--red);border-color:var(--red);transform:translateY(-1px)}
 .follow-link svg{flex:none}
 @media(max-width:860px){.follow-section{grid-template-columns:1fr;padding:36px 24px;gap:24px}}
 
-/* FOOTER */
+/* ─── FOOTER ─── */
 footer{background:#0a0a0a;color:#c9c9c9;margin-top:64px;padding-top:52px;font-size:14px}
 .footer-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;padding-bottom:44px}
 .footer-brand .logo{color:#fff;font-size:28px;display:inline-block;margin-bottom:14px}
 .footer-brand p{color:#8f8f8f;font-size:13.5px;max-width:36ch;line-height:1.65}
 .footer-col h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.15em;color:#fff;margin-bottom:16px;font-weight:800}
-.footer-col a{display:block;padding:7px 0;color:#a8a8a8;cursor:pointer}
+.footer-col a{display:block;padding:7px 0;color:#a8a8a8;cursor:pointer;transition:color .15s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid #222;padding:24px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12.5px;color:#7c7c7c}
 .footer-bottom div{display:flex;gap:24px;flex-wrap:wrap}
 @media(max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
 
-/* VIEWS */
-#homeView,#articleView{animation:fadeIn .35s cubic-bezier(.2,.7,.3,1) both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.read-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:300;display:none}
+/* ─── ARTICLE VIEW ─── */
+#homeView,#articleView{animation:fadeSlideIn .4s cubic-bezier(.2,.7,.3,1) both}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.read-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:300;display:none;transition:width .1s linear}
 body.reading .read-progress{display:block}
 .article-page{max-width:860px;margin:0 auto;padding:32px 0 20px}
-.back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--red);margin-bottom:28px;cursor:pointer}
-.back-link:hover{opacity:.7}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--red);margin-bottom:28px;cursor:pointer;transition:gap .2s}
+.back-link:hover{gap:12px}
 .article-head h1{font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.032em;font-weight:800;margin-bottom:18px}
 .article-dek{font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#3a3a3a;max-width:66ch;margin-bottom:20px}
 .article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:32px}
@@ -177,19 +192,25 @@ body.reading .read-progress{display:block}
 @media(max-width:700px){.article-related .grid{grid-template-columns:1fr}}
 @media(max-width:640px){.article-body p{font-size:17px}.article-body p:first-of-type::first-letter{font-size:52px}}
 
-/* SEARCH */
-.search-overlay{position:fixed;inset:0;background:rgba(15,15,15,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);z-index:400;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px;opacity:0;visibility:hidden;transition:all .28s ease}
+/* ─── BACK TO TOP ─── */
+.back-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;z-index:250;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,visibility .25s,transform .25s,background .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.back-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.back-top:hover{background:var(--red)}
+@media(max-width:600px){.back-top{bottom:16px;right:16px;width:44px;height:44px}}
+
+/* ─── SEARCH ─── */
+.search-overlay{position:fixed;inset:0;background:rgba(15,15,15,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);z-index:400;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
 .search-overlay.open{opacity:1;visibility:visible}
-.search-box{background:#fff;width:100%;max-width:680px;box-shadow:0 30px 90px rgba(0,0,0,.4);transform:translateY(-24px) scale(.98);transition:transform .34s cubic-bezier(.2,.7,.3,1)}
+.search-box{background:#fff;width:100%;max-width:680px;box-shadow:0 30px 90px rgba(0,0,0,.4);transform:translateY(-24px) scale(.98);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
 .search-overlay.open .search-box{transform:translateY(0) scale(1)}
 .search-header{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line)}
 .search-header svg{color:var(--muted);flex:none}
 .search-header input{flex:1;font:inherit;font-size:19px;padding:6px 0;border:0;outline:none;background:transparent}
-.search-close{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--muted);transition:all .15s}
+.search-close{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--muted);transition:background .15s,color .15s,transform .15s}
 .search-close:hover{background:var(--soft);color:var(--ink);transform:rotate(90deg)}
 .search-meta{padding:10px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);background:#fafafa}
 .search-results{max-height:52vh;overflow-y:auto}
-.search-result{display:flex;gap:16px;align-items:center;padding:14px 22px;cursor:pointer;border-bottom:1px solid var(--line)}
+.search-result{display:flex;gap:16px;align-items:center;padding:14px 22px;cursor:pointer;border-bottom:1px solid var(--line);transition:background .12s}
 .search-result:last-child{border-bottom:0}
 .search-result:hover,.search-result.selected{background:var(--soft)}
 .search-result .thumb{width:84px;flex:none;aspect-ratio:3/2;background:#e8e8e8;overflow:hidden}
@@ -204,12 +225,12 @@ body.reading .read-progress{display:block}
 .search-hint kbd{display:inline-block;background:#fff;border:1px solid #ddd;border-radius:3px;padding:1px 6px;font-size:11px;font-weight:700;box-shadow:0 1px 0 #ddd}
 @media(max-width:600px){.search-overlay{padding:0}.search-box{height:100%;display:flex;flex-direction:column}.search-results{flex:1;max-height:none}.search-hint{display:none}}
 
-/* INFO MODAL */
-.modal-backdrop{position:fixed;inset:0;background:rgba(15,15,15,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:all .28s ease}
+/* ─── INFO MODAL ─── */
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,15,15,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
 .modal-backdrop.open{opacity:1;visibility:visible}
-.modal-backdrop .modal-box{background:#fff;position:relative;transform:translateY(18px) scale(.97);transition:transform .34s cubic-bezier(.2,.7,.3,1);box-shadow:0 25px 80px rgba(0,0,0,.35);max-height:calc(100vh - 48px);overflow-y:auto}
+.modal-backdrop .modal-box{background:#fff;position:relative;transform:translateY(18px) scale(.97);transition:transform .35s cubic-bezier(.2,.7,.3,1);box-shadow:0 25px 80px rgba(0,0,0,.35);max-height:calc(100vh - 48px);overflow-y:auto}
 .modal-backdrop.open .modal-box{transform:translateY(0) scale(1)}
-.modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:var(--muted);z-index:2}
+.modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:var(--muted);z-index:2;transition:background .15s,color .15s,transform .15s}
 .modal-close:hover{background:var(--soft);color:var(--ink);transform:rotate(90deg)}
 .info-box{max-width:460px;width:100%;padding:34px 32px 30px}
 .info-box h3{font-size:22px;font-weight:800;margin-bottom:14px;padding-right:32px}
@@ -278,16 +299,27 @@ body.reading .read-progress{display:block}
   <div id="homeView">
     <section class="hero">
       <div class="hero-main">
-        <div class="media r-16x9" data-article="0"><img src="https://picsum.photos/seed/auning-hero-school/1200/675" alt="Auning Skole"></div>
+        <div class="media r-16x9" data-article="0">
+          <img class="hero-img" src="https://picsum.photos/seed/auning-hero-school/1200/675" alt="Auning Skole" data-src="https://picsum.photos/seed/auning-hero-school/1200/675">
+        </div>
         <span class="kicker">Skolestruktur</span>
-        <h1 class="hero-title"><a href="#/artikel/0" data-article="0">Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”</a></h1>
+        <h1 class="hero-title hero-headline"><a href="#/artikel/0" data-article="0">Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”</a></h1>
         <p class="hero-dek">Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs. I dag går børnene fra Langhøjskolen, Allingåbroskolen og Rougsøskolen videre til Auning Skole i 7. klasse — men den ordning kan snart være fortid.</p>
         <div class="meta"><span>Af lokalredaktionen</span><span class="sep">·</span><span>5. oktober 2026</span></div>
       </div>
       <div class="hero-side">
-        <div class="side-item" data-article="1"><div><span class="kicker">Løb for Livet</span><h3>24 timer med natbadminton, disko og romaskiner</h3><div class="meta"><span>Tradition</span></div></div><div class="media r-4x3"><img src="https://picsum.photos/seed/auning-lob/300/225" alt="" loading="lazy"></div></div>
-        <div class="side-item" data-article="2"><div><span class="kicker">Budget</span><h3>1,7 millioner kroner frigivet: Auning Skole får nyt faglokale</h3><div class="meta"><span>10. marts 2026</span></div></div><div class="media r-4x3"><img src="https://picsum.photos/seed/auning-budget/300/225" alt="" loading="lazy"></div></div>
-        <div class="side-item" data-article="3"><div><span class="kicker">Dialogmøde</span><h3>150 borgere stillede op: Skoleområdet mangler 10 millioner</h3><div class="meta"><span>9. oktober 2026</span></div></div><div class="media r-4x3"><img src="https://picsum.photos/seed/auning-meeting/300/225" alt="" loading="lazy"></div></div>
+        <div class="side-item" data-article="1">
+          <div><span class="kicker">Løb for Livet</span><h3>24 timer med natbadminton, disko og romaskiner</h3><div class="meta"><span>Tradition</span></div></div>
+          <div class="media r-4x3"><img src="https://picsum.photos/seed/auning-lob/300/225" alt="" loading="lazy"></div>
+        </div>
+        <div class="side-item" data-article="2">
+          <div><span class="kicker">Budget</span><h3>1,7 millioner kroner frigivet: Auning Skole får nyt faglokale</h3><div class="meta"><span>10. marts 2026</span></div></div>
+          <div class="media r-4x3"><img src="https://picsum.photos/seed/auning-budget/300/225" alt="" loading="lazy"></div>
+        </div>
+        <div class="side-item" data-article="3">
+          <div><span class="kicker">Dialogmøde</span><h3>150 borgere stillede op: Skoleområdet mangler 10 millioner</h3><div class="meta"><span>9. oktober 2026</span></div></div>
+          <div class="media r-4x3"><img src="https://picsum.photos/seed/auning-meeting/300/225" alt="" loading="lazy"></div>
+        </div>
       </div>
     </section>
 
@@ -311,7 +343,6 @@ body.reading .read-progress{display:block}
       </div>
     </section>
 
-    <!-- FOLLOW SECTION (replaces newsletter — no email collection) -->
     <section class="follow-section" id="followSection">
       <div>
         <h2>Følg Auning Skole</h2>
@@ -344,6 +375,11 @@ body.reading .read-progress{display:block}
   </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" aria-label="Til toppen">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
 <!-- SEARCH -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-box">
@@ -368,7 +404,7 @@ body.reading .read-progress{display:block}
 </div>
 
 <script>
-/* ══════════════════ ARTICLES ══════════════════ */
+/* ══════════════════ ARTICLES — with NEW facts ══════════════════ */
 const articles = [
   {id:0,kicker:"Skolestruktur",title:"Flere end 100 forældre mødte op på Auning Skole: “Vi vil ikke have, at vores skole bliver revet væk under os”",dek:"Det var et fyldt lokale, da forældre og politikere tirsdag aften skulle tale om fremtidens folkeskoler i Norddjurs. I dag går børnene fra Langhøjskolen, Allingåbroskolen og Rougsøskolen videre til Auning Skole i 7. klasse — men den ordning kan snart være fortid.",date:"5. oktober 2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-hero-school/1200/675",caption:"Auning Skole danner i dag rammen om udskolingen for elever fra flere mindre skoler i Norddjurs.",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/flere-hundrede-er-samlet-for-at-kaempe-for-landsbyskoler-fbd9b",text:`<p>Det var et fyldt lokale på Auning Skole tirsdag aften, da mere end 100 forældre mødte op for at tale om fremtidens folkeskoler i Norddjurs Kommune. Mødet var arrangeret i forlængelse af kommunens arbejde med at forme “Fremtidens Folkeskole”, som for alvor gik i gang i foråret, og hvor planerne nu er blevet til konkrete forslag.</p><p>I den nordvestlige del af kommunen er der lige nu tre skoler med lige over 100 elever på hver: Langhøjskolen i Vivild, Allingåbroskolen og Rougsøskolen i Ørsted. I dag flytter børnene fra disse skoler til Auning Skole, når de skal i syvende klasse. Men den ordning kan snart være fortid.</p><p>Ifølge TV2 Østjylland peger politikerne på to mulige modeller. Enten at samle alle eleverne på én skole og lukke de to andre. Eller at lade én af skolerne have elever helt fra 0. til 9. klasse og lade de to andre have elever op til 3. eller 6. klasse.</p><p>“Vi vil ikke have, at vores skole bliver revet væk under os,” lød det fra en af de fremmødte forældre på mødet.</p><p>Baggrunden er et skoleområde, der ventes at overskride budgettet med 10 millioner kroner næste år. Borgere kan stadig sende høringssvar frem til 15. oktober.</p><p>Debatten fortsætter i kommunalbestyrelsen, hvor der skal træffes endelig beslutning om skolestrukturen. For forældrene på Auning Skole handler det ikke kun om deres egen skole, men om hele lokalsamfundet i den nordvestlige del af Norddjurs.</p>`},
   {id:1,kicker:"Løb for Livet",title:"Løb for Livet: 24 timer med natbadminton, disko i svømmehallen og dyst på romaskiner",dek:"Det er ikke et almindeligt motionsløb. Når Auning Skoles udskoling går i gang med Løb for Livet, holder eleverne sig i bevægelse i et helt døgn — med natbadminton, skakturnering, spinningkonkurrence og klasselokaler pyntet som forskellige lande.",date:"Tradition",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-lob/600/400",caption:"Løb for Livet er et 24-timers aktivitetsmaraton for hele udskolingen på Auning Skole.",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",videoUrl:"https://www.tv2ostjylland.dk/skoleelever-loeber-i-24-timer",text:`<p>Det er ikke et almindeligt motionsløb, når Auning Skoles udskoling afholder “Løb for Livet”. Det er et 24-timers aktivitetsmaraton, der starter klokken 10.00 dagen før efterårsferien — og hvor hele udskolingen er i bevægelse, indtil det hele slutter næste formiddag.</p><p>“Klokken 10.00 i dag lød startskuddet til dette års Løb for livet, som det næste døgn afvikles i hele vores udskoling,” har skolen tidligere skrevet om arrangementet.</p><p>Løb for Livet er en pendant til det klassiske motionsløb, som mange skoler traditionen tro afvikler fredag op til efterårsferien. Men hvor de fleste skoler sender eleverne ud på en rute, laver Auning Skoles udskoling alle mulige andre former for motion det næste døgn.</p><p>Eleverne deltager på skift i de mange aktiviteter. Hver klasse skal holde en motionscykel kørende hele døgnet, og klasserne dyster samtidig om at ro længst på tid på skolens romaskiner.</p><p>Programmet er pakket med idrætsaktiviteter, natbadminton, natdisko i svømmehallen, skakturnering, spinningkonkurrence, romaskiner, dans, bow combat og tiovli-aktiviteter — og ifølge skolen selv “meget, meget mere”.</p><p>På skolen er klasselokalerne pyntet i tema ud fra det land, som den enkelte klasse har fået tildelt. Om aftenen går det løs med blandt andet ridning på rodeotyr, disko-svømning og UV-fodbold.</p><p>“Et helt døgn med fuld knald på og masser af bevægelse — og helt sikkert masser af trætte unge mennesker i morgen kl. 10, når det hele slutter og efterårsferien starter,” har skolen skrevet om arrangementet.</p><p>For eleverne er Løb for Livet blevet en fast tradition og et af de arrangementer, de ser mest frem til i løbet af skoleåret.</p>`},
@@ -378,8 +414,24 @@ const articles = [
   {id:5,kicker:"Fællesskab",title:"Elever samlede 52.000 kroner ind til ukrainske børn",dek:"Det begyndte med hjemmebagte muffins og armbånd. Målet var 10.000 kroner — men indsamlingen på Auning Skole voksede langt ud over alle forventninger.",date:"18. april 2022",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-ukraine/600/400",caption:"Eleverne på Auning Skole samlede mere end 52.000 kroner ind.",source:"TV2 Østjylland",sourceUrl:"https://www.tv2ostjylland.dk/norddjurs/imponerende-indsats-skoleelever-loeber-bager-og-rydder-op-til-fordel-for-ukrainske-boern",text:`<p>Eleverne på Auning Skole, særligt fra 5. årgang, samlede mere end 52.000 kroner ind til fordel for børn i Ukraine. Det begyndte med hjemmebagte muffins og armbånd, men voksede hurtigt til en indsats, der involverede store dele af byen.</p><p>“Jeg er mega imponeret af og stolt over de her børn, der har givet den en ordentlig skalle,” siger Kasper Fur Eriksen, der er lærer hos mellemtrinet på Auning Skole.</p><p>Eleverne samlede 227 kilo skrald ind i byen, vaskede vinduer, tømte opvaskemaskiner og lavede havearbejde for at tjene penge.</p>`},
   {id:6,kicker:"Sport",title:"Skolefodboldhold blandt de 16 bedste i Danmark",dek:"Både pigernes og drengenes hold på Auning Skole nåede kredsfinalerne i DBU Skolepokalen. Det er 30 år efter pigernes historiske sejr i Parken.",date:"9. december 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-football/600/400",caption:"Auning Skoles fodboldhold nåede blandt de 16 bedste skolehold i Danmark.",source:"Din Avis",sourceUrl:"https://dinavis.dk/sport/ECE18824841/skolefodboldhold-imponerer-flot-i-landsdaekkende-turnering-i-30aaret-for-historisk-sejr-i-skolefodboldturneringen/",text:`<p>Auning Skoles fodboldhold markerede sig flot i årets DBU Skolepokalen. Både pigernes og drengenes hold nåede kredsfinalerne og dermed blandt de 16 bedste skolehold i Danmark.</p><p>I kredsfinalerne måtte begge Auning-mandskaber imidlertid strække gevær. Pigerne tabte 4-1 til Morten Børup Skolen fra Skanderborg. Drengene tabte 3-0 til Østerhåbskolen Torsted.</p><p>Det er i år 30 år siden, at Auning Skoles piger gik hele vejen i turneringen til Parken i København.</p>`},
   {id:7,kicker:"Undervisning",title:"1. klasse gjorde læsning meningsfuld med halloween og pralbønner",dek:"I 1. klasse på Auning Skole læste eleverne korte, lydrette ord, der passede til halloween. Senere handlede det om pralbønnens vej fra kim til plante.",date:"27. juni 2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-reading/600/400",caption:"Læseundervisningen på Auning Skole tager udgangspunkt i emner, der giver mening for eleverne.",source:"Viden om Læsning",sourceUrl:"https://videnomlaesning.dk/viden-og-vaerktoejer/webdok/m-som-i-meningsfuld-laeseundervisning/",text:`<p>I 1. klasse på Auning Skole læste og skrev eleverne korte, lydrette ord, der passede til halloween. Da sommeren nærmede sig, handlede det om pralbønnens vej fra kim til plante.</p><p>Undervisningen var en del af projektet (Selv)sikker læsestart, hvor der er fokus på læse- og skriveundervisning, der er meningsfuld for eleverne.</p><p>Henriette Romme Lund, specialkonsulent i Nationalt Videncenter for Læsning, besøgte skolen og talte med lærerne Kirsten Bilde Fogh og Kirsten Gjødvad Klinge.</p>`},
-  {id:8,kicker:"Om skolen",title:"Auning Skole: Knap 700 elever og 120 ansatte",dek:"Skolen dækker børnehaveklasse til 9. klasse og har både specialklasser og modtagelsesklasser. Her er et overblik over skolen.",date:"2024–2025",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-school-yard/600/400",caption:"Auning Skole ligger midt mellem Randers og Grenaa.",source:"Norddjurs Kommune / Auning Skole",sourceUrl:"https://auning-skole.aula.dk/info/auning-skole/generel-information",text:`<p>Auning Skole ligger i Auning by i Norddjurs Kommune på Djursland og dækker børnehaveklasse til og med 9. klasse. Skolen beskriver selv, at den ligger “midt mellem Randers og Grenaa” og rummer “knap 700 elever”.</p><p>Skolen har 8 specialklasser, 2 modtagelsesklasser og “gode mellemformer”. Der er i alt 120 ansatte, herunder ledelse, lærere, pædagoger, tekniske servicemedarbejdere og administrativt personale.</p><p>Skolen er organiseret som en faseopdelt skole med en grundskole (indskoling og mellemtrin) og udskoling. Skoledagen starter kl. 8.00, og lærerne møder ind i klassen kl. 7.50.</p><p>Følg skolens hverdag på Facebook: <a href="https://www.facebook.com/AuningSkole" target="_blank" rel="noopener">facebook.com/AuningSkole</a>.</p>`}
+
+  /* ─── NEW STORIES from research ─── */
+  {id:9,kicker:"Om skolen",title:"Auning Skole: 688 elever og et karaktergennemsnit på 6,8",dek:"Skolen har 21,4 elever pr. klasse og et karaktergennemsnit på 6,8 ved 9.-klasseprøverne i 2025/2026. Det viser nye nøgletal fra skoleklar.nu.",date:"2025/2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-stats/600/400",caption:"Auning Skole har 688 elever i skoleåret 2025/2026.",source:"skoleklar.nu",sourceUrl:"https://skoleklar.nu/skole/auning-skole/",text:`<p>Auning Skole har 688 elever og 21,4 elever pr. klasse i skoleåret 2025/2026. Det er lidt over kommunegennemsnittet på 20,0 og landsgennemsnittet på 20,7, viser nøgletal fra skoleklar.nu.</p><p>Karaktergennemsnittet ved 9.-klasseprøverne var 6,8 i 2025/2026 — mod 7,0 i Norddjurs Kommune og 7,3 på landsplan. Undervisningseffekten er 0, hvilket betyder, at eleverne klarer sig som forventet ud fra deres socioøkonomiske baggrund.</p><p>85,6 % af eleverne har høj trivsel. Det samlede elevfravær var 7,9 %, og 84,2 % af eleverne var i gang med en ungdomsuddannelse i september året efter 9. eller 10. klasse.</p><p>Elevtallet er faldet fra 693 i 2018/2019 til 688 i 2025/2026.</p>`},
+  {id:10,kicker:"Om skolen",title:"8 specialklasser, 2 modtagelsesklasser og 120 ansatte",dek:"Auning Skole rummer knap 700 elever fra 0. til 9. klasse — og har både specialklasser, modtagelsesklasser og gode mellemformer.",date:"2025/2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-special/600/400",caption:"Auning Skole har 8 specialklasser og 2 modtagelsesklasser.",source:"Auning Skole / Norddjurs Kommune",sourceUrl:"https://auning-skole.aula.dk/info/auning-skole/generel-information",text:`<p>Auning Skole har 8 specialklasser, 2 modtagelsesklasser og “gode mellemformer”. På skolen er der i alt 120 ansatte, herunder ledelse, lærere, pædagoger, tekniske servicemedarbejdere samt it- og administrativt personale.</p><p>Specialklasserne er placeret blandt de almene klasser på skolen, og personalet er uddannet inden for specialfeltet. Skolen har modtagerklasser i henholdsvis indskoling, mellemtrin og udskoling — typisk for elever med flygtningebaggrund.</p><p>Norddjurs Kommunes modtagerklasser er placeret i Grenaa og Auning. To af de tre modtagelsesklasser ligger på Auning Skole. Fra skoleåret 2026-27 udfases ordningen til fordel for hurtigere integration i almenskolen.</p>`},
+  {id:11,kicker:"Hverdag",title:"SFO'en har 135 elever — og skolen arbejder med “Såren”",dek:"Auning Skole har en SFO med 135 elever. Skolen har også gjort gode erfaringer med specialgruppen “Såren” for udfordrede elever i 1.–6. årgang.",date:"2025/2026",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-sfo/600/400",caption:"SFO'en på Auning Skole har 135 elever.",source:"Auning Skole / Norddjurs Kommune",sourceUrl:"https://auning-skole.aula.dk/sites/auning-skole.aula.dk/files/arkiv/Download_filer/Uddannelsesplan - 1. og 2. niveau.pdf",text:`<p>Til Auning Skole er der tilknyttet en SFO med 135 elever. Skolen har 650 elever på hele skolen og i alt 120 ansatte ifølge skolens uddannelsesplan.</p><p>På Auning Skole har der i en årrække været gjort gode erfaringer med den lokale specialgruppe “Såren”, som har været et tilbud for udfordrede elever i 1.–6. årgang. Fra skoleåret 2019/20 hedder tilbuddet “55åren” og tilbydes elever i 7. klasse.</p><p>Skolen arbejder også med “VPS” — videnproducerende skole — hvor lærerne systematisk producerer viden om praksis for at styrke undervisningskvaliteten.</p>`},
+  {id:12,kicker:"Undervisning",title:"To voksne i klassen: Auning Skole styrker indskolingen",dek:"Fra skoleår 22/23 har alle klasser fra 0. til og med 3. klasse haft to voksne i klassen i 10 lektioner om ugen. Skolen vægter teamsamarbejde højt.",date:"2022/2023",byline:"Af lokalredaktionen",image:"https://picsum.photos/seed/auning-indskoling/600/400",caption:"Auning Skole har to voksne i indskolingsklasserne i 10 lektioner om ugen.",source:"Auning Skole",sourceUrl:"https://auning-skole.aula.dk/sites/auning-skole.aula.dk/files/arkiv/Download_filer/Uddannelsesplan - 1. og 2. niveau.pdf",text:`<p>På Auning Skole vægter man teamsamarbejdet meget højt. Skolen er inddelt i årgangsteam, som består af 4-5 lærere, der i fællesskab har ansvaret for planlægningen og tilrettelæggelsen af undervisningen på en bestemt årgang.</p><p>Fra skoleår 22/23 har alle klasser fra 0. til og med 3. klasse haft to voksne i klassen i 10 lektioner om ugen. Det skal skabe trygge og faste rammer, hvor eleverne lærer, trives og deltager i fællesskabet.</p><p>Skolen arbejder ud fra PLF (Professionelle læringsfællesskaber) og har stort fokus på at skabe gode overgange mellem skole og dagtilbud, mellem de forskellige afdelinger og til ungdomsuddannelse.</p>`}
 ];
+
+/* ══════════════════ LAZY IMAGE FADE ══════════════════ */
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  img.classList.add('lazy');
+  if (img.complete && img.naturalHeight !== 0) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+    img.addEventListener('error', () => img.classList.add('loaded'));
+  }
+});
 
 /* ══════════════════ HOME RENDER ══════════════════ */
 const latestList = document.getElementById('latestList');
@@ -416,6 +468,14 @@ function renderHome(filter){
   structureGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
   practiceGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
   ids.slice(0, 5).forEach((id, i) => renderMostRead(id, i));
+  // re-init lazy images inside rendered HTML
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    if (!img.classList.contains('lazy')) {
+      img.classList.add('lazy');
+      if (img.complete && img.naturalHeight !== 0) img.classList.add('loaded');
+      else img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
 }
 renderHome('all');
 
@@ -423,6 +483,7 @@ renderHome('all');
 const homeView = document.getElementById('homeView');
 const articleView = document.getElementById('articleView');
 const progress = document.getElementById('readProgress');
+const backTop = document.getElementById('backTop');
 
 function articlePageHTML(a){
   const related = articles.filter(x => x.id !== a.id).slice(0, 3);
@@ -436,17 +497,33 @@ function articlePageHTML(a){
     '<figure class="article-figure"><img src="' + a.image + '" alt="' + a.title + '">' + (a.caption ? '<figcaption>' + a.caption + '</figcaption>' : '') + '</figure>';
   return '<div class="article-page"><a href="#/" class="back-link" id="backToHome"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tilbage til forsiden</a><header class="article-head"><span class="kicker">' + a.kicker + '</span><h1>' + a.title + '</h1><p class="article-dek">' + a.dek + '</p><div class="article-meta"><span class="author">' + a.byline + '</span><span class="sep">·</span><span>' + a.date + '</span></div></header>' + videoHTML + figureHTML + '<div class="article-body">' + a.text + '</div><div class="article-source"><strong>Kilde:</strong> <a href="' + a.sourceUrl + '" target="_blank" rel="noopener">' + a.source + '</a></div><section class="article-related"><h2>Læs også</h2><div class="grid">' + relatedHTML + '</div></section></div>';
 }
+
+/* Smooth transition using View Transitions API when available */
 function showArticle(a){
-  articleView.innerHTML = articlePageHTML(a);
-  homeView.hidden = true;
-  articleView.hidden = false;
-  document.body.classList.add('reading');
-  document.title = a.title + ' — Auning Skole Nyheder';
-  window.scrollTo(0, 0);
-  progress.style.width = '0%';
-  const back = document.getElementById('backToHome');
-  if(back) back.addEventListener('click', (e) => { e.preventDefault(); location.hash = '#/'; });
+  const apply = () => {
+    articleView.innerHTML = articlePageHTML(a);
+    homeView.hidden = true;
+    articleView.hidden = false;
+    document.body.classList.add('reading');
+    document.title = a.title + ' — Auning Skole Nyheder';
+    window.scrollTo(0, 0);
+    progress.style.width = '0%';
+    const back = document.getElementById('backToHome');
+    if(back) back.addEventListener('click', (e) => { e.preventDefault(); smoothBackToHome(); });
+    // lazy init for related images
+    articleView.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.classList.add('lazy');
+      if (img.complete) img.classList.add('loaded');
+      else img.addEventListener('load', () => img.classList.add('loaded'));
+    });
+  };
+  if (document.startViewTransition) {
+    document.startViewTransition(apply);
+  } else {
+    apply();
+  }
 }
+
 function showHome(){
   homeView.hidden = false;
   articleView.hidden = true;
@@ -454,7 +531,18 @@ function showHome(){
   document.body.classList.remove('reading');
   document.title = 'Auning Skole — Nyheder';
   progress.style.width = '0%';
+  backTop.classList.remove('show');
 }
+
+function smoothBackToHome(){
+  if (document.startViewTransition) {
+    document.startViewTransition(showHome);
+  } else {
+    showHome();
+  }
+  history.pushState(null, '', '#/');
+}
+
 function router(){
   const match = location.hash.match(/^#\/artikel\/(\d+)/);
   if(match){ const a = articles.find(x => x.id === Number(match[1])); if(a){ showArticle(a); return; } }
@@ -465,17 +553,25 @@ window.addEventListener('DOMContentLoaded', router);
 
 document.addEventListener('click', (e) => {
   const trigger = e.target.closest('[data-article]');
-  if(trigger){ e.preventDefault(); location.hash = '#/artikel/' + trigger.dataset.article; }
+  if(trigger){
+    e.preventDefault();
+    location.hash = '#/artikel/' + trigger.dataset.article;
+  }
 });
 
+/* Reading progress + back-to-top */
 function updateProgress(){
-  if(articleView.hidden) return;
   const doc = document.documentElement;
   const total = doc.scrollHeight - doc.clientHeight;
-  progress.style.width = Math.min(100, Math.max(0, total > 0 ? (doc.scrollTop / total) * 100 : 0)) + '%';
+  const pct = total > 0 ? (doc.scrollTop / total) * 100 : 0;
+  if (!articleView.hidden) progress.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  if (doc.scrollTop > 400) backTop.classList.add('show');
+  else backTop.classList.remove('show');
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 window.addEventListener('resize', updateProgress);
+
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ══════════════════ SEARCH ══════════════════ */
 const searchOverlay = document.getElementById('searchOverlay');
