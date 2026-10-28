@@ -118,15 +118,15 @@ body.nav-open .mobile-nav{display:block}
 .card:hover h3{color:var(--red)}
 .card p{font-size:14px;color:var(--muted);margin-top:8px}
 
-/* ─── LIVE LIST ─── */
-.live-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px}
-.live-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;cursor:pointer;transition:background .15s}
+/* ─── LIVE LIST / SENESTE NYT ─── */
+.live-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.live-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start;min-width:0;cursor:pointer;transition:background .15s}
 .live-item:hover{background:var(--soft)}
-.live-time{font-size:13px;font-weight:800;color:var(--red);flex:none;width:48px;font-variant-numeric:tabular-nums}
-.live-item p{font-size:15px;font-weight:600;line-height:1.3;transition:color .2s}
+.live-time{font-size:13px;font-weight:800;color:var(--red);flex:none;width:52px;font-variant-numeric:tabular-nums;line-height:1.35}
+.live-item p{font-size:15px;font-weight:600;line-height:1.35;min-width:0;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s}
 .live-item:hover p{color:var(--red)}
-@media(max-width:900px){.live-list{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.live-list{grid-template-columns:1fr}}
+@media(max-width:900px){.live-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}}
+@media(max-width:620px){.live-list{grid-template-columns:1fr;gap:0}.live-time{width:48px}}
 
 /* ─── SPLIT ─── */
 .split{display:grid;grid-template-columns:2fr 1fr;gap:56px;align-items:start}
@@ -482,10 +482,15 @@ function renderHome(filter){
   let ids = articles.map(a => a.id);
   if(filter && filter !== 'all') ids = articles.filter(a => a.kicker === filter).map(a => a.id);
   if(ids.length === 0) ids = articles.map(a => a.id);
-  ids.forEach(renderLatest);
+
+  // Begræns "Seneste nyt" til maks. 6 historier, så sektionen ikke bliver for lang
+  const latestIds = ids.slice(0, 6);
+  latestIds.forEach(renderLatest);
+
   structureGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
   practiceGrid.innerHTML = ids.slice(0, 4).map(cardHTML).join('');
   ids.slice(0, 5).forEach((id, i) => renderMostRead(id, i));
+
   // re-init lazy images inside rendered HTML
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     if (!img.classList.contains('lazy')) {
